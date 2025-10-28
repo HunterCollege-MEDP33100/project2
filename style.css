@@ -17,14 +17,6 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-.plane-icon {
-  font-size: 24px;         /* Bigger plane */
-  text-shadow: 0 0 8px #ff416c, 0 0 15px #ff416c; /* Glow effect */
-  color: #ff416c;          /* Plane color */
-  transform: rotate(0deg); /* We'll rotate later if needed */
-}
-
-
 h1 {
   margin: 20px;
   text-align: center;
@@ -72,4 +64,8 @@ h1 {
   background-color: #ff416c;
   box-shadow: 0 0 25px rgba(255, 65, 108, 0.8);
   transform: translateY(-2px);
+}
+.plane-icon {
+  font-size: 28px; /* Bigger plane */
+  text-shadow: 0 0 6px #00adb5, 0 0 12px #00adb5; /* Glow effect */
 }

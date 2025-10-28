@@ -94,10 +94,14 @@ cities.forEach((city) => {
         dashArray: '8, 12'
       }).addTo(map);
 
+
+      
       // ✈️ add plane icon that moves
       const plane = L.marker(previousCity.coords, {
         icon: L.divIcon({ html: '✈️', className: 'plane-icon' })
       }).addTo(map);
+
+      
 
       let step = 0;
       const steps = 50;
@@ -172,3 +176,36 @@ async function getLocalArtists(city) {
   return mockData[city] || [];
 }
 
+const cityData = {
+  Nashville: {
+    genres: { Country: 50, 'Country Pop': 30, Rock: 20 },
+    moods: { Happy: 40, Chill: 35, Energetic: 25 }
+  },
+  Seattle: {
+    genres: { Rock: 60, HipHop: 25, Jazz: 15 },
+    moods: { Chill: 50, Energetic: 30, Happy: 20 }
+  },
+  // add more cities...
+};
+const ctx = document.getElementById('genre-chart').getContext('2d');
+let genreChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: [], // genre names
+    datasets: [{
+      label: 'Genre Popularity',
+      data: [], // values
+      backgroundColor: '#00adb5',
+      borderRadius: 5
+    }]
+  },
+  options: {
+    responsive: true,
+    animation: { duration: 800 },
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { beginAtZero: true, ticks: { color: '#eeeeee' } },
+      x: { ticks: { color: '#eeeeee' } }
+    }
+  }
+});
