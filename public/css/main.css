@@ -1,16 +1,17 @@
+/* Global Styles */
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: Arial, sans-serif;
   background: linear-gradient(270deg, #222831, #393e46, #00adb5, #eeeeee);
   background-size: 800% 800%;
   animation: gradientShift 20s ease infinite;
-  color: #eeeeee;
 }
 
+/* Gradient Animation */
 @keyframes gradientShift {
   0% {
     background-position: 0% 50%;
@@ -23,47 +24,52 @@ body {
   }
 }
 
+/* Headings */
 h1 {
   margin: 20px;
   text-align: center;
 }
 
+/* Map Container */
 #map {
   width: 80%;
   height: 500px;
-  border-radius: 8px;
   margin-bottom: 20px;
+  border-radius: 8px;
 }
 
+/* Info Box */
 #info {
   width: 80%;
-  background: #f5f5f5;
   padding: 15px;
+  background: #f5f5f5;
   border-radius: 8px;
 }
 
+/* Artist List */
 #artist-list {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
+/* Reset View Button */
 #reset-view {
   position: absolute;
   top: 15px;
   right: 15px;
-  bottom: auto;
   z-index: 1000;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 30px;
   background-color: #1d2b64;
   color: #fff;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 30px;
-  font-family: 'Aboreto', cursive;
+  font-family: "Aboreto", cursive;
   font-size: 14px;
   letter-spacing: 0.5px;
   cursor: pointer;
   box-shadow: 0 0 15px rgba(29, 43, 100, 0.6);
-  transition: 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 #reset-view:hover {
@@ -71,7 +77,44 @@ h1 {
   box-shadow: 0 0 25px rgba(255, 65, 108, 0.8);
   transform: translateY(-2px);
 }
+
+/* Plane Icon */
 .plane-icon {
-  font-size: 28px; /* Bigger plane */
-  text-shadow: 0 0 6px #00adb5, 0 0 12px #00adb5; /* Glow effect */
+  font-size: 28px;
+  text-shadow: 0 0 6px #00adb5, 0 0 12px #00adb5;
+}
+
+.artist-item {
+  list-style: none;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.artist-card {
+  display: flex;
+  align-items: center;
+  background: #222;
+  padding: 10px;
+  border-radius: 10px;
+  gap: 10px;
+}
+
+.artist-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.artist-info {
+  color: #eee;
+}
+
+.artist-info a {
+  color: #1db954;
+  text-decoration: none;
+}
+.artist-info a:hover {
+  text-decoration: underline;
 }
