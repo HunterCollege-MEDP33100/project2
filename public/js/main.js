@@ -1,4 +1,3 @@
-
 // Initialize map
 const map = L.map('map').setView([39.5, -98.35], 4); // Center of US
 
@@ -28,50 +27,47 @@ const cities = [
   { name: 'St. Louis', coords: [38.627, -90.1994] },
   { name: 'Kansas City', coords: [39.0997, -94.5786] },
   // New cities to add
-{ name: 'Philadelphia', coords: [39.9526, -75.1652] },       
-{ name: 'Detroit', coords: [42.3314, -83.0458] },          
-{ name: 'Atlanta', coords: [33.749, -84.388] },             
-{ name: 'Memphis', coords: [35.1495, -90.049] },            
-{ name: 'Cleveland', coords: [41.4993, -81.6944] },          
-{ name: 'Baltimore', coords: [39.2904, -76.6122] },         
-{ name: 'Denver', coords: [39.7392, -104.9903] },            
-{ name: 'Minneapolis', coords: [44.9778, -93.265] },      
-{ name: 'Las Vegas', coords: [36.1699, -115.1398] },         
-{ name: 'San Francisco', coords: [37.7749, -122.4194] },     
-{ name: 'Sacramento', coords: [38.5816, -121.4944] },       
-{ name: 'Phoenix', coords: [33.4484, -112.074] },          
-{ name: 'Tucson', coords: [32.2226, -110.9747] },          
-{ name: 'Salt Lake City', coords: [40.7608, -111.891] },     
-{ name: 'Albuquerque', coords: [35.0844, -106.6504] },       
-{ name: 'Santa Fe', coords: [35.687, -105.9378] },           
-{ name: 'Boulder', coords: [40.01499, -105.2705] },         
-{ name: 'Indianapolis', coords: [39.7684, -86.1581] },       
-{ name: 'Cincinnati', coords: [39.1031, -84.512] },          
-{ name: 'Louisville', coords: [38.2527, -85.7585] },         
-{ name: 'Pittsburgh', coords: [40.4406, -79.9959] },      
-{ name: 'Raleigh', coords: [35.7796, -78.6382] },           
-{ name: 'Durham', coords: [35.994, -78.8986] },              
-{ name: 'Charleston', coords: [32.7765, -79.9311] },        
-{ name: 'Savannah', coords: [32.0809, -81.0912] },          
-{ name: 'Tampa', coords: [27.9506, -82.4572] },              
-{ name: 'Orlando', coords: [28.5383, -81.3792] },           
-{ name: 'Birmingham', coords: [33.5186, -86.8104] },        
-{ name: 'Anchorage', coords: [61.2181, -149.9003] },        
-{ name: 'Honolulu', coords: [21.3069, -157.8583] },        
-{ name: 'Boise', coords: [43.615, -116.2023] },              
-{ name: 'Des Moines', coords: [41.5868, -93.625] },      
-{ name: 'Madison', coords: [43.0731, -89.4012] },            
-{ name: 'Milwaukee', coords: [43.0389, -87.9065] },          
-{ name: 'Omaha', coords: [41.2565, -95.9345] },              
-{ name: 'Fargo', coords: [46.8772, -96.7898] },           
-{ name: 'Sioux Falls', coords: [43.5446, -96.7311] },       
-{ name: 'Burlington', coords: [44.4759, -73.2121] },         
-{ name: 'Portsmouth', coords: [43.0718, -70.7626] },         
-{ name: 'Little Rock', coords: [34.7465, -92.2896] },        
-{ name: 'Jackson', coords: [32.2988, -90.1848] },            
-
-  
-  
+  { name: 'Philadelphia', coords: [39.9526, -75.1652] },
+  { name: 'Detroit', coords: [42.3314, -83.0458] },
+  { name: 'Atlanta', coords: [33.749, -84.388] },
+  { name: 'Memphis', coords: [35.1495, -90.049] },
+  { name: 'Cleveland', coords: [41.4993, -81.6944] },
+  { name: 'Baltimore', coords: [39.2904, -76.6122] },
+  { name: 'Denver', coords: [39.7392, -104.9903] },
+  { name: 'Minneapolis', coords: [44.9778, -93.265] },
+  { name: 'Las Vegas', coords: [36.1699, -115.1398] },
+  { name: 'San Francisco', coords: [37.7749, -122.4194] },
+  { name: 'Sacramento', coords: [38.5816, -121.4944] },
+  { name: 'Phoenix', coords: [33.4484, -112.074] },
+  { name: 'Tucson', coords: [32.2226, -110.9747] },
+  { name: 'Salt Lake City', coords: [40.7608, -111.891] },
+  { name: 'Albuquerque', coords: [35.0844, -106.6504] },
+  { name: 'Santa Fe', coords: [35.687, -105.9378] },
+  { name: 'Boulder', coords: [40.01499, -105.2705] },
+  { name: 'Indianapolis', coords: [39.7684, -86.1581] },
+  { name: 'Cincinnati', coords: [39.1031, -84.512] },
+  { name: 'Louisville', coords: [38.2527, -85.7585] },
+  { name: 'Pittsburgh', coords: [40.4406, -79.9959] },
+  { name: 'Raleigh', coords: [35.7796, -78.6382] },
+  { name: 'Durham', coords: [35.994, -78.8986] },
+  { name: 'Charleston', coords: [32.7765, -79.9311] },
+  { name: 'Savannah', coords: [32.0809, -81.0912] },
+  { name: 'Tampa', coords: [27.9506, -82.4572] },
+  { name: 'Orlando', coords: [28.5383, -81.3792] },
+  { name: 'Birmingham', coords: [33.5186, -86.8104] },
+  { name: 'Anchorage', coords: [61.2181, -149.9003] },
+  { name: 'Honolulu', coords: [21.3069, -157.8583] },
+  { name: 'Boise', coords: [43.615, -116.2023] },
+  { name: 'Des Moines', coords: [41.5868, -93.625] },
+  { name: 'Madison', coords: [43.0731, -89.4012] },
+  { name: 'Milwaukee', coords: [43.0389, -87.9065] },
+  { name: 'Omaha', coords: [41.2565, -95.9345] },
+  { name: 'Fargo', coords: [46.8772, -96.7898] },
+  { name: 'Sioux Falls', coords: [43.5446, -96.7311] },
+  { name: 'Burlington', coords: [44.4759, -73.2121] },
+  { name: 'Portsmouth', coords: [43.0718, -70.7626] },
+  { name: 'Little Rock', coords: [34.7465, -92.2896] },
+  { name: 'Jackson', coords: [32.2988, -90.1848] },
 ];
 
 let flightLine;
@@ -91,24 +87,24 @@ cities.forEach((city) => {
         color: '#ff416c',
         weight: 3,
         opacity: 0.7,
-        dashArray: '8, 12'
+        dashArray: '8, 12',
       }).addTo(map);
 
-
-      
       // ✈️ add plane icon that moves
       const plane = L.marker(previousCity.coords, {
-        icon: L.divIcon({ html: '✈️', className: 'plane-icon' })
+        icon: L.divIcon({ html: '✈️', className: 'plane-icon' }),
       }).addTo(map);
-
-      
 
       let step = 0;
       const steps = 50;
       const interval = setInterval(() => {
         step++;
-        const lat = previousCity.coords[0] + (city.coords[0] - previousCity.coords[0]) * (step / steps);
-        const lng = previousCity.coords[1] + (city.coords[1] - previousCity.coords[1]) * (step / steps);
+        const lat =
+          previousCity.coords[0] +
+          (city.coords[0] - previousCity.coords[0]) * (step / steps);
+        const lng =
+          previousCity.coords[1] +
+          (city.coords[1] - previousCity.coords[1]) * (step / steps);
         plane.setLatLng([lat, lng]);
         if (step >= steps) {
           clearInterval(interval);
@@ -124,14 +120,12 @@ cities.forEach((city) => {
   });
 });
 
-
 // Reset map view button
 document.getElementById('reset-view').addEventListener('click', () => {
   map.flyTo([39.5, -98.35], 4, { duration: 2 }); // Fly back to center of the US
   document.getElementById('city-name').innerText = 'Click a city!';
   document.getElementById('artist-list').innerHTML = '';
 });
-
 
 // Function to fetch artists (Spotify API placeholder)
 async function loadCityArtists(cityName) {
@@ -179,11 +173,11 @@ async function getLocalArtists(city) {
 const cityData = {
   Nashville: {
     genres: { Country: 50, 'Country Pop': 30, Rock: 20 },
-    moods: { Happy: 40, Chill: 35, Energetic: 25 }
+    moods: { Happy: 40, Chill: 35, Energetic: 25 },
   },
   Seattle: {
     genres: { Rock: 60, HipHop: 25, Jazz: 15 },
-    moods: { Chill: 50, Energetic: 30, Happy: 20 }
+    moods: { Chill: 50, Energetic: 30, Happy: 20 },
   },
   // add more cities...
 };
@@ -192,12 +186,14 @@ let genreChart = new Chart(ctx, {
   type: 'bar',
   data: {
     labels: [], // genre names
-    datasets: [{
-      label: 'Genre Popularity',
-      data: [], // values
-      backgroundColor: '#00adb5',
-      borderRadius: 5
-    }]
+    datasets: [
+      {
+        label: 'Genre Popularity',
+        data: [], // values
+        backgroundColor: '#00adb5',
+        borderRadius: 5,
+      },
+    ],
   },
   options: {
     responsive: true,
@@ -205,7 +201,7 @@ let genreChart = new Chart(ctx, {
     plugins: { legend: { display: false } },
     scales: {
       y: { beginAtZero: true, ticks: { color: '#eeeeee' } },
-      x: { ticks: { color: '#eeeeee' } }
-    }
-  }
+      x: { ticks: { color: '#eeeeee' } },
+    },
+  },
 });
