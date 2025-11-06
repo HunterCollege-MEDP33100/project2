@@ -2,7 +2,8 @@
 
 ## Team members
 
-- Add all the names of all the team members
+- Ivy Zhao
+- Pedro Troncoso
 
 ## Live Demo
 
