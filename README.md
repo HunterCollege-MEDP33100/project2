@@ -2,7 +2,9 @@
 
 ## Team members
 
-- Add all the names of all the team members
+Jorge 
+Emily 
+Hannah
 
 ## Live Demo
 
