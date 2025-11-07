@@ -1,8 +1,43 @@
 body {
-  padding: 50px;
+  margin: 0px;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+html{
+  padding: 0px;
+  margin: 0px;
+}
+
+/*Styling for the navbar to go through the different interactions*/
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 1em;
+  overflow: hidden;
+  background-color: #333333;
+  font-size: 1.25rem;
+}
+
+ul li {
+  float: left;
+  color: white;
+  margin-left: 1em;
+}
+
+ul li:first-child{
+  margin-left: 0rem;
+  cursor: none;
+}
+
+/*Design of header leading to show the interaction*/
+h2{
+  margin-left: 2rem;
+  margin-top: 1.5rem;
+}
+
+/*Leaflet Map*/
+#map {
+  height: 180px;
 }
