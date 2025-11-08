@@ -1,5 +1,5 @@
 async function getData(){
-    const response = await fetch('/data/favorite-trees.json');
+    const response = await fetch('/api/items');
     const data = await response.json();
     console.log(data);
 }
