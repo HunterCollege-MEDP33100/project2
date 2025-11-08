@@ -53,4 +53,4 @@ async function getArtistIDs(items) {
 }
 
 getData()
-//after loading in tracks data, we need to get the top 10 artist ids, their popularity, and images of artist. it'll show the ranking of the top 10, and when you click into an artist, there will be an 'about me' section, and a sample of their most popular song will play(?)
+//after loading in tracks data, we need to get all of the artist ids, their popularity, and images of artist. We then want to have sorting options, where we can rank them by popularity and alphabetical order. When you click into an artist, there will be an 'about me' section, and a sample of their most popular song will play (or in this case, whatever of their song is in the playlist)
