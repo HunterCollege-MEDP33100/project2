@@ -1,8 +1,8 @@
-console.log('loaded')
 const PLAYLIST_ID = '5ABHKGoOzxkaa28ttQV9sE'
 
 
 async function getToken() {
+    console.log('token got')
     let token = null
     if (localStorage.getItem('spotifyToken')) {
         token = localStorage.getItem('spotifyToken')
@@ -17,6 +17,7 @@ async function getToken() {
 
 async function getTopPlaylist() {
     const token = await getToken()
+    console.log('playlist got')
     try {
         const response = await fetch(`
 https://api.spotify.com/v1/playlists/${PLAYLIST_ID}`, {
@@ -28,7 +29,7 @@ https://api.spotify.com/v1/playlists/${PLAYLIST_ID}`, {
 
         if (data.error) {
             localStorage.removeItem('spotifyToken')
-            await getTopPlaylist()
+            await getTopPlaylist(await getToken())
         } else {
             return data
         }
@@ -38,11 +39,6 @@ https://api.spotify.com/v1/playlists/${PLAYLIST_ID}`, {
     }
 }
 
-async function getData() {
-    const playlistData = await getTopPlaylist()
-    const artistIDs = getArtistIDs(playlistData.tracks.items)
-}
-
 async function getArtistIDs(items) {
     const allArtists = []
     for (let i = 0; i < items.length; i++) {
@@ -50,6 +46,34 @@ async function getArtistIDs(items) {
         allArtists.push(artistData.id)
     }
     console.log(allArtists)
+    return allArtists
+}
+
+async function getArtistPopularity(artistIDs, token) {
+    const artists = [];
+    for (const id of artistIDs) {
+        const response = await fetch(`https://api.spotify.com/v1/artists/${id}`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        const data = await response.json();
+
+        artists.push({
+            name: data.name,
+            id: data.id,
+            popularity: data.popularity,
+            image: data.images?.[0]?.url || null
+        });
+    }
+
+    console.log(artists);
+    return artists;
+}
+
+async function getData() {
+    const token = await getToken()
+    const playlistData = await getTopPlaylist()
+    const artistIDs = await getArtistIDs(playlistData.tracks.items)
+    const allArtistData = await getArtistPopularity(artistIDs, token)
 }
 
 getData()
