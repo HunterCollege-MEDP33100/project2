@@ -39,11 +39,15 @@ async function getTopPlaylist() {
 }
 
 async function getArtistIDs(items) {
-    const allArtists = []
+    const allArtists = new Set()
     for (let i = 0; i < items.length; i++) {
         const artistData = items[i].track.artists[0]
-        allArtists.push(artistData.id)
+        if (artistData && artistData.id) {
+            allArtists.add(artistData.id)
+        }
     }
+
+    const artistArray = [...allArtists]
     console.log(allArtists)
     return allArtists
 }
@@ -74,7 +78,27 @@ async function getData() {
     const artistIDs = await getArtistIDs(playlistData.tracks.items)
     const allArtistData = await getArtistPopularity(artistIDs, token)
 
+    const artistPopularityRanked = [...allArtistData].sort((a, b) => b.popularity - a.popularity)
+    return artistPopularityRanked
 }
 
-getData()
+async function displayPopularity() {
+    const artistPopularityRanked = await getData()
+    const div = document.createElement('div')
+    div.classList.add('popularity')
+
+    artistPopularityRanked.forEach(artist => {
+        const artistDiv = document.createElement('div')
+        artistDiv.classList.add('artist')
+
+        const artistName = document.createElement('p')
+        artistName.textContent = `${artist.name} - Popularity:${artist.popularity}`
+
+        artistDiv.appendChild(artistName)
+        div.appendChild(artistDiv)
+    });
+    document.body.appendChild(div)
+}
+
+displayPopularity()
 //after loading in tracks data, we need to get all of the artist ids, their popularity, and images of artist. We then want to have sorting options, where we can rank them by popularity and alphabetical order. When you click into an artist, there will be an 'about me' section, and a sample of their most popular song will play (or in this case, whatever of their song is in the playlist)
