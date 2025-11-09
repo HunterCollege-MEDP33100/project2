@@ -19,8 +19,7 @@ async function getTopPlaylist() {
     const token = await getToken()
     console.log('playlist got')
     try {
-        const response = await fetch(`
-https://api.spotify.com/v1/playlists/${PLAYLIST_ID}`, {
+        const response = await fetch(`https://api.spotify.com/v1/playlists/${PLAYLIST_ID}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -74,6 +73,7 @@ async function getData() {
     const playlistData = await getTopPlaylist()
     const artistIDs = await getArtistIDs(playlistData.tracks.items)
     const allArtistData = await getArtistPopularity(artistIDs, token)
+
 }
 
 getData()
