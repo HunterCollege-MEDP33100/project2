@@ -46,13 +46,6 @@ h1 {
   border-radius: 8px;
 }
 
-/* Artist List */
-#artist-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
 /* Reset View Button */
 #reset-view {
   position: absolute;
@@ -84,37 +77,28 @@ h1 {
   text-shadow: 0 0 6px #00adb5, 0 0 12px #00adb5;
 }
 
-.artist-item {
+.playlist-item {
   list-style: none;
   margin: 10px 0;
-  display: flex;
-  align-items: center;
 }
 
-.artist-card {
+.playlist-card {
   display: flex;
   align-items: center;
-  background: #222;
-  padding: 10px;
+  gap: 15px;
+  background: #fff;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.playlist-img {
+  width: 100px;
+  height: 100px;
   border-radius: 10px;
-  gap: 10px;
-}
-
-.artist-img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
   object-fit: cover;
 }
 
-.artist-info {
-  color: #eee;
-}
-
-.artist-info a {
-  color: #1db954;
-  text-decoration: none;
-}
-.artist-info a:hover {
-  text-decoration: underline;
+.playlist-info {
+  flex: 1;
 }

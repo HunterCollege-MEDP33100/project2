@@ -116,8 +116,7 @@ cities.forEach((city) => {
     // Fly to selected city
     map.flyTo(city.coords, 8, { duration: 2 });
 
-    // Load artist data
-    await loadCityArtists(city.name);
+    await loadCityPlaylists(city.name);
 
     previousCity = city;
   });
@@ -131,46 +130,47 @@ document.getElementById("reset-view").addEventListener("click", () => {
 });
 
 // --- Fetch artists from backend ---
-async function loadCityArtists(cityName) {
+async function loadCityPlaylists(cityName) {
   const cityTitle = document.getElementById("city-name");
-  const list = document.getElementById("artist-list");
+  const list = document.getElementById("playlist-list");
 
-  cityTitle.innerText = `🎧 Top Artists from ${cityName}`;
+  cityTitle.innerText = `🎶 City Vibes: ${cityName}`;
   list.innerHTML = "<li>Loading...</li>";
 
   try {
-    const res = await fetch(`/top-artists/${encodeURIComponent(cityName)}`);
+    const res = await fetch(`/city-playlists/${encodeURIComponent(cityName)}`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
 
     list.innerHTML = "";
-    if (!data.artists || data.artists.length === 0) {
-      list.innerHTML = "<li>No artists found for this city.</li>";
+    if (!data.playlists || data.playlists.length === 0) {
+      list.innerHTML = "<li>No playlists found for this city.</li>";
       return;
     }
 
-    // Populate artist list
-    data.artists.forEach((artist) => {
+    // Populate playlist list
+    data.playlists.forEach((pl) => {
       const li = document.createElement("li");
-      li.classList.add("artist-item");
+      li.classList.add("playlist-item");
       li.innerHTML = `
-        <div class="artist-card">
-          <img src="${artist.image || "placeholder.png"}" alt="${
-        artist.name
-      }" class="artist-img" />
-          <div class="artist-info">
-            <strong><a href="${artist.spotify_url}" target="_blank">${
-        artist.name
+        <div class="playlist-card">
+          <img src="${pl.image || "placeholder.png"}" 
+               alt="${pl.name}" 
+               class="playlist-img" />
+          <div class="playlist-info">
+            <strong><a href="${pl.spotify_url}" target="_blank">${
+        pl.name
       }</a></strong><br>
-            <span>${artist.genres.join(", ") || "Unknown genres"}</span><br>
-            <small>${artist.followers.toLocaleString()} followers</small>
+            <small>by ${pl.owner}</small><br>
+            <span>${pl.description || "No description available"}</span><br>
+            <small>${pl.track_count} tracks</small>
           </div>
         </div>
       `;
       list.appendChild(li);
     });
   } catch (err) {
-    console.error("Error loading artists:", err);
-    list.innerHTML = "<li>Error loading artists. Try again later.</li>";
+    console.error("Error loading playlists:", err);
+    list.innerHTML = "<li>Error loading playlists. Try again later.</li>";
   }
 }
