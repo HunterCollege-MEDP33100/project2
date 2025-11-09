@@ -2,21 +2,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>US Music Map</title>
+    <title>My Listening Station</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="css/main.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <h1>🎵 Explore Local Artists Across the U.S.</h1>
-    <button id="reset-view">Reset View</button>
+    <header>
+      <h1>🎧 My Listening Station</h1>
+      <p class="tagline">Discover music by city, mood, genre, or decade</p>
+    </header>
 
-    <div id="map"></div>
+    <!-- Feature Grid -->
+    <section id="mode-grid">
+      <div class="mode-card" id="map-mode">
+        <h2>🗺️ My Map</h2>
+        <p>Explore playlists from cities across the U.S.</p>
+        <button class="enter-mode">Explore</button>
+      </div>
 
-    <div id="info">
-      <h2 id="city-name">🎶 City Vibes</h2>
-      <ul id="playlist-list" class="playlist-grid"></ul>
-    </div>
+      <div class="mode-card" id="mood-mode">
+        <h2>💫 My Mood</h2>
+        <p>Enter how you feel and get the perfect playlist.</p>
+        <button class="enter-mode">Find Vibes</button>
+      </div>
+
+      <div class="mode-card" id="genre-mode">
+        <h2>🎸 My Style</h2>
+        <p>Search by genre and explore similar sounds.</p>
+        <button class="enter-mode">Search Genre</button>
+      </div>
+
+      <div class="mode-card" id="throwback-mode">
+        <h2>🕺 Throwback Mode</h2>
+        <p>Choose a decade or era to relive the hits.</p>
+        <button class="enter-mode">Take Me Back</button>
+      </div>
+    </section>
+
+    <!-- Hidden Map Section -->
+    <section id="map-section" class="hidden">
+      <button id="back-home">⬅ Back</button>
+      <h2>🎵 Explore Local Artists Across the U.S.</h2>
+      <button id="reset-view">Reset View</button>
+      <div id="map"></div>
+      <div id="info" class="m-auto">
+        <h2 id="city-name">🎶 City Vibes</h2>
+        <ul id="playlist-list" class="playlist-grid"></ul>
+      </div>
+    </section>
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="js/main.js"></script>

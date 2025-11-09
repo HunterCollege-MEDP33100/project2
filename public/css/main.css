@@ -1,4 +1,4 @@
-/* Global Styles */
+/* === Global Styles === */
 body {
   margin: 0;
   padding: 0;
@@ -9,9 +9,10 @@ body {
   background: linear-gradient(270deg, #222831, #393e46, #00adb5, #eeeeee);
   background-size: 800% 800%;
   animation: gradientShift 20s ease infinite;
+  min-height: 100vh;
 }
 
-/* Gradient Animation */
+/* === Gradient Animation === */
 @keyframes gradientShift {
   0% {
     background-position: 0% 50%;
@@ -24,29 +25,137 @@ body {
   }
 }
 
-/* Headings */
-h1 {
-  margin: 20px;
+/* === Header Section === */
+header {
   text-align: center;
+  margin-top: 40px;
+  color: #fff;
 }
 
-/* Map Container */
-#map {
-  width: 80%;
-  height: 500px;
+header h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.tagline {
+  font-size: 1.1em;
+  opacity: 0.9;
+  margin-top: -5px;
+  color: #e0e0e0;
+}
+
+/* === Feature Mode Grid === */
+#mode-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  width: 85%;
+  max-width: 1200px;
+  margin: 50px auto;
+}
+
+/* === Individual Mode Cards === */
+.mode-card {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 25px 20px;
+  text-align: center;
+  color: #fff;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.mode-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25);
+}
+
+.mode-card h2 {
+  font-size: 1.6em;
+  margin-bottom: 10px;
+}
+
+.mode-card p {
+  font-size: 1em;
+  opacity: 0.9;
   margin-bottom: 20px;
-  border-radius: 8px;
 }
 
-/* Info Box */
-#info {
+/* === Inputs & Buttons inside cards === */
+.mode-card input,
+.mode-card select {
   width: 80%;
-  padding: 15px;
-  background: #f5f5f5;
+  padding: 10px;
+  margin-bottom: 12px;
   border-radius: 8px;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 0.95em;
 }
 
-/* Reset View Button */
+.enter-mode {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 30px;
+  background-color: #00adb5;
+  color: #fff;
+  font-size: 0.95em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.enter-mode:hover {
+  background-color: #ff416c;
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(255, 65, 108, 0.7);
+}
+
+/* === Hidden Sections === */
+.hidden {
+  display: none;
+}
+
+/* === Map View Section === */
+#map-section {
+  width: 100%;
+  text-align: center;
+  position: relative;
+  padding: 80px 0 60px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#map-section h2 {
+  margin-top: 80px;
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* === Back Button === */
+#back-home {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 30px;
+  background-color: #393e46;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 1001;
+}
+
+#back-home:hover {
+  background-color: #00adb5;
+}
+
+/* === Reset View Button === */
 #reset-view {
   position: absolute;
   top: 15px;
@@ -71,15 +180,42 @@ h1 {
   transform: translateY(-2px);
 }
 
-/* Plane Icon */
-.plane-icon {
-  font-size: 28px;
-  text-shadow: 0 0 6px #00adb5, 0 0 12px #00adb5;
+/* === Map Container === */
+#map {
+  width: 80%;
+  height: 500px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+/* === Info Box for City Playlists === */
+#info {
+  backdrop-filter: blur(6px);
+  background: #f5f5f5;
+  background: rgba(245, 245, 245, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  margin-top: 10px;
+  max-width: 1000px;
+  padding: 20px;
+  text-align: left;
+  width: 80%;
+}
+
+#info h2 {
+  margin-top: 0;
+  color: #222;
+}
+
+/* === Playlist Styles === */
 .playlist-item {
   list-style: none;
   margin: 10px 0;
+}
+
+.playlist-grid {
+  padding: 0;
+  margin: 0;
 }
 
 .playlist-card {
@@ -90,6 +226,18 @@ h1 {
   padding: 12px;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.playlist-card:hover {
+  transform: translateY(-3px);
+}
+
+.playlist-card img {
+  aspect-ratio: 1;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
 }
 
 .playlist-img {
@@ -101,4 +249,44 @@ h1 {
 
 .playlist-info {
   flex: 1;
+}
+
+/* === Plane Icon === */
+.plane-icon {
+  font-size: 28px;
+  text-shadow: 0 0 6px #00adb5, 0 0 12px #00adb5;
+}
+
+.mood-btn {
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mood-btn:hover {
+  background: #ff6600;
+  transform: scale(1.05);
+}
+
+/* === Responsive Adjustments === */
+@media (max-width: 768px) {
+  #map {
+    width: 95%;
+    height: 400px;
+  }
+
+  #info {
+    width: 95%;
+  }
+
+  #mode-grid {
+    width: 90%;
+    gap: 20px;
+  }
 }

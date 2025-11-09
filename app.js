@@ -50,41 +50,60 @@ async function getAccessToken() {
   return accessToken;
 }
 
+async function fetchPlaylists(query) {
+  const token = await getAccessToken();
+  const searchUrl = "https://api.spotify.com/v1/search";
+  const response = await axios.get(searchUrl, {
+    headers: { Authorization: `Bearer ${token}` },
+    params: { q: query, type: "playlist", limit: 10 },
+  });
+  return response.data.playlists.items
+    .filter((pl) => pl)
+    .map((pl) => ({
+      name: pl.name,
+      description: pl.description,
+      owner: pl.owner.display_name,
+      spotify_url: pl.external_urls.spotify,
+      image: pl.images[0]?.url,
+      track_count: pl.tracks.total,
+    }));
+}
+
 app.get("/city-playlists/:city", async (req, res) => {
-  const city = req.params.city;
-
   try {
-    const token = await getAccessToken();
-    const searchUrl = "https://api.spotify.com/v1/search";
-
-    // Search Spotify for playlists with the city name in their title or description
-    const response = await axios.get(searchUrl, {
-      headers: { Authorization: `Bearer ${token}` },
-      params: {
-        q: `${city} Playlist`,
-        type: "playlist",
-        limit: 10,
-      },
-    });
-
-    const playlists = response.data.playlists.items
-      .filter((pl) => pl)
-      .map((pl) => ({
-        name: pl.name,
-        description: pl.description,
-        owner: pl.owner.display_name,
-        spotify_url: pl.external_urls.spotify,
-        image: pl.images[0]?.url,
-        track_count: pl.tracks.total,
-      }));
-
-    res.json({ city, count: playlists.length, playlists });
-  } catch (error) {
-    console.error(
-      "Error fetching playlists:",
-      error.response?.data || error.message
-    );
+    const playlists = await fetchPlaylists(`${req.params.city} city playlist`);
+    res.json({ city: req.params.city, count: playlists.length, playlists });
+  } catch (err) {
     res.status(500).json({ error: "Failed to fetch city playlists" });
+  }
+});
+
+app.get("/mood-playlists/:mood", async (req, res) => {
+  try {
+    const playlists = await fetchPlaylists(`${req.params.mood} mood playlist`);
+    res.json({ mood: req.params.mood, count: playlists.length, playlists });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch mood playlists" });
+  }
+});
+
+app.get("/genre-playlists/:genre", async (req, res) => {
+  try {
+    const playlists = await fetchPlaylists(
+      `${req.params.genre} genre playlist`
+    );
+    res.json({ genre: req.params.genre, count: playlists.length, playlists });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch genre playlists" });
+  }
+});
+
+app.get("/era-playlists/:era", async (req, res) => {
+  try {
+    const playlists = await fetchPlaylists(`${req.params.era} era playlist`);
+    res.json({ era: req.params.era, count: playlists.length, playlists });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch era playlists" });
   }
 });
 
