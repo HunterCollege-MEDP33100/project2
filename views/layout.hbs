@@ -2,8 +2,13 @@
 <html>
 
 <head>
+  <link rel="dns-prefetch" href="https://embed-cdn.spotifycdn.com" />
+  <link rel="preconnect" href="https://embed-cdn.spotifycdn.com" crossorigin>
+  <meta name="viewport" content="width=device-width" />
   <title>{{title}}</title>
   <link rel='stylesheet' href='/stylesheets/style.css' />
+
+  {{!-- loads spotify's official iframe embed API and allows us to create an embedded music player --}}
   <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
 
 </head>

@@ -28,7 +28,7 @@ async function getTopPlaylist() {
 
         if (data.error) {
             localStorage.removeItem('spotifyToken')
-            await getTopPlaylist(await getToken())
+            await getTopPlaylist(token)
         } else {
             return data
         }
@@ -52,7 +52,7 @@ async function getArtistIDs(items) {
     return allArtists
 }
 
-async function getArtistPopularity(artistIDs, token) {
+async function getArtistData(artistIDs, token) {
     const artists = [];
     for (const id of artistIDs) {
         const response = await fetch(`https://api.spotify.com/v1/artists/${id}`, {
@@ -62,7 +62,6 @@ async function getArtistPopularity(artistIDs, token) {
 
         artists.push({
             name: data.name,
-            id: data.id,
             popularity: data.popularity,
             image: data.images?.[0]?.url || null
         });
@@ -76,17 +75,28 @@ async function getData() {
     const token = await getToken()
     const playlistData = await getTopPlaylist()
     const artistIDs = await getArtistIDs(playlistData.tracks.items)
-    const allArtistData = await getArtistPopularity(artistIDs, token)
+    const allArtistData = await getArtistData(artistIDs, token)
 
+    //sorts the artists from most to least popular
     const artistPopularityRanked = [...allArtistData].sort((a, b) => b.popularity - a.popularity)
     return artistPopularityRanked
 }
 
 async function displayPopularity() {
+    document.getElementById('title').style.display = 'none'
+    const loading = document.getElementById('loading')
+
     const artistPopularityRanked = await getData()
+
+    //after data retrieved, hide "loading artists..." and show title
+    document.getElementById('title').style.display = 'block'
+    loading.style.display = 'none'
+
+    //create a div with the class popularity
     const div = document.createElement('div')
     div.classList.add('popularity')
 
+    //for each artistID retrieved from data, create an individual div for it with the class 'artist', and creates a button with the text content being their name.
     artistPopularityRanked.forEach(artist => {
         const artistDiv = document.createElement('div')
         artistDiv.classList.add('artist')
@@ -98,6 +108,7 @@ async function displayPopularity() {
         artistDiv.appendChild(artistName)
         div.appendChild(artistDiv)
     });
+    //puts 'popularity' div onto HTML page
     document.body.appendChild(div)
 }
 

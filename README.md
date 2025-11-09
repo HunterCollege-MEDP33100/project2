@@ -11,12 +11,14 @@
 
 ## Project Overview
 
-- Briefly describe the purpose of the project.
-- Explain what live data set was used, and what you hope users would learn about the data set by using your project
+- This website displays all the artists on a user-made playlist on Spotify. When selecting an artist, it'll show a short summary of the selected artist and a music player that plays the artist's track in the playlist
+- Playlist: https://open.spotify.com/playlist/5ABHKGoOzxkaa28ttQV9sE 
 
 ## Features
 
-- List all (at least 3) distinct types of user interaction, such as filtering, sorting, modifying data views, or changing the data presentation.
+- Music Player
+- Artist "about me" section
+- Artists' popularity ranked in descending order on the horizontal scroll bar
 
 ## Technologies Used
 
@@ -24,7 +26,7 @@
     - **Languages**: HTML, CSS, JavaScript
     - **Libraries**: (e.g., GSAP for animations)
     - **APIs**: Public APIs where the data set comes from
-    - **Other**: Figma for design, Adobe Illustrator for illustrations, OpenAI for A.I. generated assets, etc.
+    - **Other**: Figma for design, OpenAI for A.I.
 
 ## Credits
 
@@ -33,6 +35,9 @@
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
 - https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_menu_hor_scroll
+- https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/?utm_source=lighthouse&utm_medium=devtools
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meta/name/viewport
+
 
 ## Future Enhancements
 
