@@ -91,8 +91,9 @@ async function displayPopularity() {
         const artistDiv = document.createElement('div')
         artistDiv.classList.add('artist')
 
-        const artistName = document.createElement('p')
-        artistName.textContent = `${artist.name} - Popularity:${artist.popularity}`
+        const artistName = document.createElement('button')
+        artistName.classList.add('artist-button')
+        artistName.textContent = `${artist.name}`
 
         artistDiv.appendChild(artistName)
         div.appendChild(artistDiv)

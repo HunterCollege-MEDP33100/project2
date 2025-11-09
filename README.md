@@ -32,6 +32,7 @@
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
+- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_menu_hor_scroll
 
 ## Future Enhancements
 

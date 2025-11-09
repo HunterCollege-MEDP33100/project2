@@ -1,8 +1,27 @@
-body {
-  padding: 50px;
+* {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+h1 {
+  font-size: 50px;
+  padding: none;
+}
+
+.popularity {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.artist {
+  display: inline-block;
+  padding: 1vh;
+  text-align: center;
+  text-decoration: none;
+}
+
+.artist-button {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 1vh 1vh;
 }
