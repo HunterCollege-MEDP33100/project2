@@ -39,5 +39,8 @@ h2{
 
 /*Leaflet Map*/
 #map {
-  height: 70vh;
+  height: 75vh;
+  border-style: solid;
+  border-color: black;
+  border-width: .25em;
 }
