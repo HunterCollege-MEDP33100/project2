@@ -6,18 +6,20 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-  fs.readFile('./data/favorite-trees.json', 'utf8', function(err,data){
-
-    if (err){
-      console.log(err);
-      res.statusCode = 404;
-      res.send('Sorry not found');
-    } 
     res.render('index', {
 
     });
 
-  })
+  
 });
+
+router.get('/trees', async function(req, res){
+
+    const response = await fetch('https://www.nycgovparks.org/tree-map-feeds/favorite-trees.json',);
+    const data = await response.json();
+    console.log(data);
+    res.json(data);
+
+})
 
 module.exports = router;
