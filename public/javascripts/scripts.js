@@ -1,6 +1,6 @@
 // call to leaflet for the tile
 //set view is starting location
-var map = L.map('map').setView([40.8, -73.9], 11);
+var map = L.map('map').setView([40.7678, -73.9645], 14);
 document.getElementById('map')
 
 //adds the viewable part of the map aka tile
@@ -31,5 +31,4 @@ fetch("https://data.cityofnewyork.us/api/v3/views/n6c5-95xh/query.json", {
 //function to display kiosks with tablet status = to up then display location on button click
 
 //function to display all kiosks on button click, should also be default
-//allKiosks(){
-    
+
