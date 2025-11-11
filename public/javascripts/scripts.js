@@ -9,4 +9,27 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-//the parse function :(
+//the fetch function :(
+fetch("https://data.cityofnewyork.us/api/v3/views/n6c5-95xh/query.json", {
+  headers: {
+    "X-App-Token": "4k4VyutNPbcS7eUbG8ycYfV98"
+  }
+})
+  .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        data.forEach(item => {
+    // Make sure latitude and longitude exist
+            if (item.latitude && item.longitude) {
+            L.marker([item.latitude, item.longitude])
+            .addTo(map)
+    }});
+});
+
+//function to display kiosks with wifi status = to up then display location on button click
+
+//function to display kiosks with tablet status = to up then display location on button click
+
+//function to display all kiosks on button click, should also be default
+//allKiosks(){
+    
