@@ -26,9 +26,9 @@ fetch("https://data.cityofnewyork.us/api/v3/views/n6c5-95xh/query.json", {
     }});
 });
 
-//function to display kiosks with wifi status = to up then display location on button click
+//function to display kiosks with wifi status = to up then display location on button click should start the function with clearing all current markers then running previous function with if statement to check for wifi status
 
-//function to display kiosks with tablet status = to up then display location on button click
+//function to display kiosks with tablet status = to up then display location on button click same as above but check for tablet status
 
-//function to display all kiosks on button click, should also be default
+//function to display all kiosks on button click, should also be default just the same function as previous
 
