@@ -1,5 +1,5 @@
 * {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "fangsong";
 }
 
 h1 {
@@ -28,7 +28,7 @@ h1 {
 
 
 
-/* ===== Artist info section layout ===== */
+/* Artist info section layout */
 .artist-info {
   display: flex;
   align-items: center;
