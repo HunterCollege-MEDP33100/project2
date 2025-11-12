@@ -89,7 +89,7 @@ h1 {
 /* Artist buttons hover effect */
 .artist-button {
   background-color: #eba90f; 
-  color: #ffffff;
+  color: #000000;
   border: none;
   padding: 10px 15px;
   margin: 5px 0;
@@ -101,7 +101,7 @@ h1 {
 
 .artist-button:hover {
   background-color: #ffd87d; 
-  color: black;             
+  color: #000000;             
   transform: scale(1.05);   
 }
 
