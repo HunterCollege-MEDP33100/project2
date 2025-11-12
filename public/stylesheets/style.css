@@ -28,53 +28,46 @@ h1 {
 
 
 
-
-
-
-/* --- Artist Info Section --- */
+/* === Artist Info Section === */
 .artist-info {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 2rem;
-  margin-top: 3rem;
-  padding: 2rem;
-  border-top: 2px solid #ddd;
+  align-items: center;
+  justify-content: start;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 30px;
+  gap: 20px;
 }
 
 .artist-info.hidden {
   display: none;
 }
 
-/* Artist image styling */
 .artist-image-container {
-  flex: 0 0 300px;
+  flex-shrink: 0;
 }
 
 .artist-image {
-  width: 100%;
-  border-radius: 20px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Artist text and details */
-.artist-details {
-  flex: 1;
-  color: #333;
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
 .artist-details h2 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 10px;
+  font-size: 1.8rem;
 }
 
 .artist-details p {
-  font-size: 1.2rem;
+  margin-bottom: 10px;
   color: #555;
 }
 
-/* Audio player */
-#artist-preview {
-  margin-top: 1rem;
+audio {
   width: 100%;
+  outline: none;
 }
+

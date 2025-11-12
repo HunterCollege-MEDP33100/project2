@@ -1,42 +1,63 @@
-// Wait until all artists are displayed before attaching click events
+// Wait until all content is loaded
 document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(() => {
+  const artistInfoContainer = document.getElementById("artist-info");
+  const artistImage = document.getElementById("artist-image");
+  const artistName = document.getElementById("artist-name");
+  const artistPopularity = document.getElementById("artist-popularity");
+  const artistPreview = document.getElementById("artist-preview");
+
+  // Wait for artist buttons to exist
+  const observer = new MutationObserver(() => {
     const artistButtons = document.querySelectorAll(".artist-button");
-    const infoContainer = document.getElementById("artist-info");
-    const artistName = document.getElementById("artist-name");
-    const artistPopularity = document.getElementById("artist-popularity");
-    const artistImage = document.getElementById("artist-image");
-    const artistPreview = document.getElementById("artist-preview");
 
-    artistButtons.forEach((button) => {
-      button.addEventListener("click", async () => {
-        const name = button.textContent;
-
-        // Fetch artist info from Spotify
-        const token = localStorage.getItem("spotifyToken");
-        const response = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(name)}&type=artist`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        const data = await response.json();
-        const artist = data.artists.items[0];
-
-        if (!artist) return;
-
-        // Fetch top track for preview
-        const tracksRes = await fetch(`https://api.spotify.com/v1/artists/${artist.id}/top-tracks?market=US`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        const tracksData = await tracksRes.json();
-        const topTrack = tracksData.tracks[0];
-
-        // Fill artist info
-        artistName.textContent = artist.name;
-        artistPopularity.textContent = `Popularity: ${artist.popularity}`;
-        artistImage.src = artist.images?.[0]?.url || "";
-        artistPreview.src = topTrack?.preview_url || "";
-
-        infoContainer.classList.remove("hidden");
-      });
+    artistButtons.forEach(button => {
+      // Avoid duplicate listeners
+      button.removeEventListener("click", handleArtistClick);
+      button.addEventListener("click", handleArtistClick);
     });
-  }, 1500); // Wait for artists to be loaded by script.js
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  async function handleArtistClick(event) {
+    const artistNameClicked = event.target.textContent;
+
+    // Fetch token
+    const token = localStorage.getItem("spotifyToken");
+
+    if (!token) {
+      alert("Spotify token not found. Please refresh the page.");
+      return;
+    }
+
+    // Get artist info
+    const searchResponse = await fetch(
+      `https://api.spotify.com/v1/search?q=${encodeURIComponent(artistNameClicked)}&type=artist`,
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    const searchData = await searchResponse.json();
+    const artist = searchData.artists.items[0];
+
+    if (!artist) {
+      alert("Artist not found.");
+      return;
+    }
+
+    // Get one top track for preview
+    const trackResponse = await fetch(
+      `https://api.spotify.com/v1/artists/${artist.id}/top-tracks?market=US`,
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    const trackData = await trackResponse.json();
+    const previewUrl = trackData.tracks[0]?.preview_url || null;
+
+    // Update the UI
+    artistImage.src = artist.images?.[0]?.url || "";
+    artistName.textContent = artist.name;
+    artistPopularity.textContent = `Popularity: ${artist.popularity}`;
+    artistPreview.src = previewUrl;
+
+    // Show container
+    artistInfoContainer.classList.remove("hidden");
+  }
 });
