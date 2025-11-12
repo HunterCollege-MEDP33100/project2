@@ -1,6 +1,16 @@
-* {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+body {
+  font-family: 14px 'Poppins', sans-serif;
+  background-color:rgb(176, 163, 105);
 }
+
+#title {
+  text-align: center; 
+  margin-top: 20px; 
+  margin-bottom: 20px;
+  font-size: 2rem;  
+  font-family: 'Poppins', sans-serif;
+}
+
 
 h1 {
   font-size: 50px;
@@ -28,50 +38,85 @@ h1 {
 
 
 
-/* === Artist Info Section === */
+/* Artist info section layout */
 .artist-info {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin: 50px auto; 
-  width: 80%;
-  max-width: 800px;
-  gap: 20px;
+  gap: 30px; 
+  margin-top: 60px;
+  opacity: 0; 
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
+/* When visible */
+.artist-info.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-.artist-info.hidden {
+/* Artist image */
+.artist-image {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Artist details container */
+.artist-details {
+  text-align: left;
+  max-width: 400px;
+}
+
+/* Audio element styling */
+#artist-preview {
+  display: block;
+  margin-top: 15px;
+  width: 100%;
+}
+
+/* Hide element by default */
+.hidden {
   display: none;
 }
 
-.artist-image-container {
-  flex-shrink: 0;
+
+
+
+/* Artist buttons hover effect */
+.artist-button {
+  background-color: #eba90f; 
+  color: #000000;
+  border: none;
+  padding: 10px 15px;
+  margin: 5px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease; 
 }
 
-.artist-image {
-  width: 200px;
-  height: 200px;
-  border-radius: 10px;
-  object-fit: cover;
+.artist-button:hover {
+  background-color: #ffd87d; 
+  color: #000000;             
+  transform: scale(1.05);   
 }
 
-.artist-details h2 {
-  margin-bottom: 10px;
-  font-size: 1.8rem;
+.artist-button:hover {
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
 }
 
-.artist-details p {
-  margin-bottom: 10px;
-  color: #555;
+
+
+/* Active / selected artist */
+.artist-button.active {
+  background-color: #ffd87d; 
+  color: black;            
+  transform: scale(1.05); 
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
 }
 
-audio {
-  width: 100%;
-  outline: none;
-}
 

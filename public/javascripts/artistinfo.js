@@ -1,64 +1,53 @@
-// Wait until all content is loaded
-document.addEventListener("DOMContentLoaded", () => {
-  const artistInfoContainer = document.getElementById("artist-info");
-  const artistImage = document.getElementById("artist-image");
-  const artistName = document.getElementById("artist-name");
-  const artistPopularity = document.getElementById("artist-popularity");
-  const artistPreview = document.getElementById("artist-preview");
+document.addEventListener('click', async (event) => {
+  if (event.target.classList.contains('artist-button')) {
+    const artistName = event.target.textContent;
 
-  // Wait for artist buttons to exist
-  const observer = new MutationObserver(() => {
-    const artistButtons = document.querySelectorAll(".artist-button");
 
-    artistButtons.forEach(button => {
-      // Avoid duplicate listeners
-      button.removeEventListener("click", handleArtistClick);
-      button.addEventListener("click", handleArtistClick);
+    document.querySelectorAll('.artist-button').forEach(btn => {
+      btn.classList.remove('active');
     });
-  });
 
-  observer.observe(document.body, { childList: true, subtree: true });
+    event.target.classList.add('active');
 
-  async function handleArtistClick(event) {
-    const artistNameClicked = event.target.textContent;
 
-    // Fetch token
-    const token = localStorage.getItem("spotifyToken");
+    // Get token
+    const token = localStorage.getItem('spotifyToken');
+    if (!token) return;
 
-    if (!token) {
-      alert("Spotify token not found. Please refresh the page.");
-      return;
-    }
-
-    // Get artist info
-    const searchResponse = await fetch(
-      `https://api.spotify.com/v1/search?q=${encodeURIComponent(artistNameClicked)}&type=artist`,
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
+    // Fetch artist info from Spotify API
+    const searchResponse = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(artistName)}&type=artist`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
     const searchData = await searchResponse.json();
     const artist = searchData.artists.items[0];
+    if (!artist) return;
 
-    if (!artist) {
-      alert("Artist not found.");
-      return;
-    }
+    // Update artist info section
+    const infoSection = document.getElementById('artist-info');
+    const artistImg = document.getElementById('artist-image');
+    const artistNameEl = document.getElementById('artist-name');
+    const artistPopularity = document.getElementById('artist-popularity');
+    const artistPreview = document.getElementById('artist-preview');
 
-    // Get one top track for preview
-    const trackResponse = await fetch(
-      console.log('track got')
-        `https://api.spotify.com/v1/artists/${artist.id}/top-tracks?market=US`,
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
-    const trackData = await trackResponse.json();
-    const previewUrl = trackData.tracks[0]?.preview_url || null;
-
-    // Update the UI
-    artistImage.src = artist.images?.[0]?.url || "";
-    artistName.textContent = artist.name;
+    artistImg.src = artist.images?.[0]?.url || '';
+    artistNameEl.textContent = artist.name;
     artistPopularity.textContent = `Popularity: ${artist.popularity}`;
-    artistPreview.src = previewUrl;
 
-    // Show container
-    artistInfoContainer.classList.remove("hidden");
+    // Fetch artist top tracks (for preview audio)
+    const tracksResponse = await fetch(`https://api.spotify.com/v1/artists/${artist.id}/top-tracks?market=US`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    const tracksData = await tracksResponse.json();
+
+    // Get first preview available
+    const previewTrack = tracksData.tracks.find(t => t.preview_url);
+    artistPreview.src = previewTrack ? previewTrack.preview_url : '';
+
+    // Show section below artist buttons
+    infoSection.classList.remove('hidden');
+    setTimeout(() => {
+      infoSection.classList.add('visible');
+    }, 10);
   }
 });
+

@@ -108,8 +108,11 @@ async function displayPopularity() {
         artistDiv.appendChild(artistName)
         div.appendChild(artistDiv)
     });
-    //puts 'popularity' div onto HTML page
-    document.body.appendChild(div)
+
+    // put 'popularity' div ABOVE the artist info container
+const artistInfo = document.getElementById('artist-info');
+document.body.insertBefore(div, artistInfo);
+
 }
 
 displayPopularity()
