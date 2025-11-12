@@ -1,0 +1,12 @@
+<h1>{{title}}</h1>
+
+<div class="gallery-container">
+  {{#each trees}}
+  <div class="gallery-item">
+    <img src="{{this.image}}" alt="{{this.common}}" onerror="this.src='/images/default-tree.jpg'">
+    <h2>{{this.common}}</h2>
+    <p><strong>Latin name:</strong> {{this.latin}}</p>
+    <p><strong>Borough:</strong> {{this.borough}}</p>
+  </div>
+  {{/each}}
+</div>
