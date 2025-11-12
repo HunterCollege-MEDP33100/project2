@@ -62,7 +62,7 @@ h1 {
   height: 250px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 25px rgba(246, 158, 43, 0.651);
 }
 
 /* Artist details container */
