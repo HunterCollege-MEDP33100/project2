@@ -1,8 +1,15 @@
-// Attach event listener to artist buttons after they are created
 document.addEventListener('click', async (event) => {
   if (event.target.classList.contains('artist-button')) {
     const artistName = event.target.textContent;
 
+    
+    document.querySelectorAll('.artist-button').forEach(btn => {
+      btn.classList.remove('active');
+    });
+
+    event.target.classList.add('active');
+
+   
     // Get token
     const token = localStorage.getItem('spotifyToken');
     if (!token) return;
@@ -13,7 +20,6 @@ document.addEventListener('click', async (event) => {
     });
     const searchData = await searchResponse.json();
     const artist = searchData.artists.items[0];
-
     if (!artist) return;
 
     // Update artist info section
@@ -41,7 +47,7 @@ document.addEventListener('click', async (event) => {
     infoSection.classList.remove('hidden');
     setTimeout(() => {
       infoSection.classList.add('visible');
-    }, 10); // tiny delay for fade-in animation
+    }, 10);
   }
 });
 
