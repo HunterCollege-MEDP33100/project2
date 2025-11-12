@@ -45,7 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Get one top track for preview
     const trackResponse = await fetch(
-      `https://api.spotify.com/v1/artists/${artist.id}/top-tracks?market=US`,
+      console.log('track got')
+        `https://api.spotify.com/v1/artists/${artist.id}/top-tracks?market=US`,
       { headers: { Authorization: `Bearer ${token}` } }
     );
     const trackData = await trackResponse.json();
