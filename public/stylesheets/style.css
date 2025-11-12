@@ -31,15 +31,19 @@ h1 {
 /* === Artist Info Section === */
 .artist-info {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   background-color: #f9f9f9;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  margin-top: 30px;
+  margin: 50px auto; 
+  width: 80%;
+  max-width: 800px;
   gap: 20px;
 }
+
 
 .artist-info.hidden {
   display: none;
