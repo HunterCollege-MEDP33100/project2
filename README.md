@@ -8,7 +8,7 @@ Hannah
 
 ## Live Demo
 
-- Include a link to the live version of the project hosted on Render.
+- Include a link to the live version om f the project hosted on Render.
 
 ## Project Overview
 
