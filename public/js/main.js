@@ -1,10 +1,7 @@
-// === GLOBAL STATE ===
 let map;
 
-// === INITIALIZE MAP ===
 function initMap() {
-  map = L.map("map").setView([39.5, -98.35], 4); // Center of US
-
+  map = L.map("map").setView([39.5, -98.35], 4);
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "&copy; OpenStreetMap contributors",
   }).addTo(map);
@@ -75,9 +72,8 @@ function initMap() {
   cities.forEach((city) => {
     const marker = L.marker(city.coords).addTo(map).bindPopup(city.name);
     marker.on("click", async () => {
-      document.getElementById(
-        "info"
-      ).innerHTML = `<h2>🎵 ${city.name} Vibes</h2><p>Loading...</p>`;
+      const info = document.getElementById("info");
+      info.innerHTML = `<h2>🎵 ${city.name} Vibes</h2><p>Loading...</p>`;
       const res = await fetch(
         `/city-playlists/${encodeURIComponent(city.name)}`
       );
@@ -87,123 +83,111 @@ function initMap() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", initMap);
-
-// === RENDER PLAYLISTS ===
 function renderPlaylists(playlists, label) {
   const info = document.getElementById("info");
-
   if (!playlists || playlists.length === 0) {
     info.innerHTML = `<h2>No playlists found for "${label}" 😢</h2>`;
     return;
   }
-
   info.innerHTML = `
     <h2>🎧 ${label} Playlists</h2>
     <div class="playlist-grid">
       ${playlists
         .map(
           (pl) => `
-          <div class="playlist-card">
-            <img src="${
-              pl.image || "https://placehold.co/300x180?text=No+Image"
-            }" alt="${pl.name}" />
-            <div class="playlist-info">
-              <h3>${pl.name}</h3>
-              <p>${pl.description || "No description"}</p>
-              <a href="${pl.spotify_url}" target="_blank">Open in Spotify →</a>
-            </div>
+        <div class="playlist-card">
+          <img src="${
+            pl.image || "https://placehold.co/300x180?text=No+Image"
+          }" alt="${pl.name}" />
+          <div class="playlist-info">
+            <h3>${pl.name}</h3>
+            <p>${pl.description || "No description"}</p>
+            <a href="${pl.spotify_url}" target="_blank">Open in Spotify →</a>
           </div>
-        `
+        </div>
+      `
         )
         .join("")}
     </div>
   `;
 }
 
-// === MODE SWITCHING ===
+// === Mode Switching ===
 const modeGrid = document.getElementById("mode-grid");
-const mapSection = document.getElementById("map-section");
-const backHomeBtn = document.getElementById("back-home");
+const modeContent = document.getElementById("mode-content");
+const modeTitle = document.getElementById("mode-title");
+const mapEl = document.getElementById("map");
+const infoEl = document.getElementById("info");
+const backButton = document.getElementById("back-button");
 
-// === HELPER FUNCTIONS ===
-function showMapMode() {
+function showMode(title, showMap = false) {
   modeGrid.classList.add("hidden");
-  mapSection.classList.remove("hidden");
-  document.getElementById("map").style.display = "block";
-  document.getElementById("info").style.display = "block";
-}
-
-function showInfoOnlyMode(title) {
-  modeGrid.classList.add("hidden");
-  mapSection.classList.remove("hidden");
-  document.getElementById("map").style.display = "none";
-  document.getElementById("info").style.display = "block";
-  document.getElementById("info").innerHTML = `<h2>${title}</h2>`;
-}
-
-function goHome() {
-  mapSection.classList.add("hidden");
-  modeGrid.classList.remove("hidden");
-  document.getElementById("map").style.display = "none";
-  document.getElementById("info").innerHTML = "";
-}
-
-backHomeBtn.addEventListener("click", goHome);
-
-// === MAP MODE ===
-document
-  .getElementById("map-mode")
-  .querySelector(".enter-mode")
-  .addEventListener("click", () => {
-    showMapMode();
+  modeContent.classList.remove("hidden");
+  modeTitle.textContent = title;
+  mapEl.classList.toggle("hidden", !showMap);
+  infoEl.innerHTML = "";
+  if (showMap) {
     setTimeout(() => {
       map.invalidateSize();
       map.flyTo([39.5, -98.35], 4);
     }, 200);
+  }
+}
+
+function goBack() {
+  modeContent.classList.add("hidden");
+  modeGrid.classList.remove("hidden");
+  mapEl.classList.add("hidden");
+  infoEl.innerHTML = "";
+  document.querySelector(".logo").src = "images/mylisteningstationbr.png";
+}
+
+backButton.addEventListener("click", goBack);
+
+document.addEventListener("DOMContentLoaded", initMap);
+
+// === Mode Buttons ===
+document
+  .getElementById("map-mode")
+  .querySelector(".enter-mode")
+  .addEventListener("click", () => {
+    showMode("🎵 Explore Local Artists Across the U.S.", true);
   });
 
-// === MOOD MODE ===
 document
   .getElementById("mood-mode")
   .querySelector(".enter-mode")
   .addEventListener("click", async () => {
-    showInfoOnlyMode("Pick a Mood 🎭");
+    showMode("Pick a Mood 🎭");
     const moods = ["Happy", "Chill", "Focus", "Party", "Sad"];
-    const buttons = moods
+    infoEl.innerHTML = moods
       .map((m) => `<button class="mood-btn" data-mood="${m}">${m}</button>`)
       .join(" ");
-    document.getElementById("info").innerHTML += `<div>${buttons}</div>`;
-    document.querySelectorAll(".mood-btn").forEach((btn) =>
+    infoEl.querySelectorAll(".mood-btn").forEach((btn) =>
       btn.addEventListener("click", async (e) => {
         const mood = e.target.dataset.mood;
-        document.getElementById(
-          "info"
-        ).innerHTML = `<h2>🎭 ${mood}</h2><p>Loading...</p>`;
+        infoEl.innerHTML = `<h2>🎭 ${mood}</h2><p>Loading...</p>`;
         const res = await fetch(`/mood-playlists/${encodeURIComponent(mood)}`);
         const json = await res.json();
         renderPlaylists(json.playlists, mood);
       })
     );
+    document.querySelector(".logo").src = "images/mymoodbr.png";
   });
 
-// === GENRE MODE ===
 document
   .getElementById("genre-mode")
   .querySelector(".enter-mode")
   .addEventListener("click", async () => {
-    showInfoOnlyMode("Choose a Genre 🎸");
+    showMode("Choose a Genre 🎸");
     const genres = ["Rock", "Pop", "Hip Hop", "Jazz", "Electronic"];
-    const buttons = genres
+    infoEl.innerHTML = genres
       .map((g) => `<button class="mood-btn" data-genre="${g}">${g}</button>`)
       .join(" ");
-    document.getElementById("info").innerHTML += `<div>${buttons}</div>`;
-    document.querySelectorAll(".mood-btn").forEach((btn) =>
+    infoEl.querySelectorAll(".mood-btn").forEach((btn) =>
       btn.addEventListener("click", async (e) => {
         const genre = e.target.dataset.genre;
-        document.getElementById(
-          "info"
-        ).innerHTML = `<h2>🎸 ${genre}</h2><p>Loading...</p>`;
+        infoEl.innerHTML = `<h2>🎸 ${genre}</h2><p>Loading...</p>`;
         const res = await fetch(
           `/genre-playlists/${encodeURIComponent(genre)}`
         );
@@ -211,25 +195,22 @@ document
         renderPlaylists(json.playlists, genre);
       })
     );
+    document.querySelector(".logo").src = "images/mystylebr.png";
   });
 
-// === ERA MODE ===
 document
   .getElementById("throwback-mode")
   .querySelector(".enter-mode")
   .addEventListener("click", async () => {
-    showInfoOnlyMode("Pick a Throwback Era ⏳");
+    showMode("Pick a Throwback Era ⏳");
     const eras = ["1970s", "1980s", "1990s", "2000s", "2010s"];
-    const buttons = eras
+    infoEl.innerHTML = eras
       .map((e) => `<button class="mood-btn" data-era="${e}">${e}</button>`)
       .join(" ");
-    document.getElementById("info").innerHTML += `<div>${buttons}</div>`;
-    document.querySelectorAll(".mood-btn").forEach((btn) =>
+    infoEl.querySelectorAll(".mood-btn").forEach((btn) =>
       btn.addEventListener("click", async (e) => {
         const era = e.target.dataset.era;
-        document.getElementById(
-          "info"
-        ).innerHTML = `<h2>⏳ ${era}</h2><p>Loading...</p>`;
+        infoEl.innerHTML = `<h2>⏳ ${era}</h2><p>Loading...</p>`;
         const res = await fetch(`/era-playlists/${encodeURIComponent(era)}`);
         const json = await res.json();
         renderPlaylists(json.playlists, era);

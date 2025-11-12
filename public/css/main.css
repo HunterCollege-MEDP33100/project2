@@ -1,35 +1,102 @@
-/* === Global Styles === */
 body {
+  background: #000;
+  color: #fff;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: Arial, sans-serif;
-  background: linear-gradient(270deg, #222831, #393e46, #00adb5, #eeeeee);
-  background-size: 800% 800%;
-  animation: gradientShift 20s ease infinite;
   min-height: 100vh;
 }
 
-/* === Gradient Animation === */
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
+.logo {
+  height: 720px;
+  flex-shrink: 0;
+}
+
+/* === Header Flex Layout === */
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; /* aligns items by their bottom edges */
+  width: 85%;
+  max-width: 1600px;
+  margin: 0 auto 20px auto;
+  position: relative;
+}
+
+/* Spotify Logo */
+.spotify-logo {
+  height: 400px;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+.spotify-logo:hover {
+  transform: scale(1.05);
+}
+
+/* Two-row note layout */
+.music-notes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: center;
+  transform: translateY(-100px);
+  flex-shrink: 0;
+}
+
+/* Notes styling and animation */
+.music-notes {
+  display: flex;
+  gap: 12px;
+  font-size: 3.4rem; /* slightly larger for visual balance */
+}
+
+.music-notes.bottom-row {
+  transform: translateX(-20px); /* slight left shift for lower row */
+  opacity: 0.85;
+}
+
+.music-notes span {
+  display: inline-block;
+  animation: bounceNote 2s ease-in-out infinite,
+    fadeNote 3s ease-in-out infinite;
+}
+
+.music-notes span:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.music-notes span:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+/* Bobbing motion for the notes */
+@keyframes bounceNote {
+  0%,
+  100% {
+    transform: translateY(0);
   }
   50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
+    transform: translateY(-15px);
   }
 }
 
-/* === Header Section === */
+/* Subtle fade rhythm */
+@keyframes fadeNote {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
 header {
   text-align: center;
-  margin-top: 40px;
-  color: #fff;
+  margin-top: -128px;
 }
 
 header h1 {
@@ -39,13 +106,47 @@ header h1 {
 }
 
 .tagline {
-  font-size: 1.1em;
+  font-size: 2.5em;
   opacity: 0.9;
   margin-top: -5px;
-  color: #e0e0e0;
+  text-align: center;
 }
 
-/* === Feature Mode Grid === */
+/* Animated text color shimmer */
+.color-phase {
+  animation: shimmerColors 6s ease-in-out infinite;
+  animation-delay: var(--delay);
+  font-weight: bold;
+}
+
+.color-phase-slow {
+  animation: shimmerColors 12s ease-in-out infinite;
+  animation-delay: var(--delay);
+  font-weight: bold;
+}
+
+@keyframes shimmerColors {
+  0% {
+    color: #00b4ff;
+  }
+  20% {
+    color: #ff47c5;
+  }
+  40% {
+    color: #a65cff;
+  }
+  60% {
+    color: #ffcc33;
+  }
+  80% {
+    color: #ff7a00;
+  }
+  100% {
+    color: #00b4ff;
+  }
+}
+
+/* === Mode Grid === */
 #mode-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -55,18 +156,15 @@ header h1 {
   margin: 50px auto;
 }
 
-/* === Individual Mode Cards === */
 .mode-card {
   background: rgba(255, 255, 255, 0.12);
   border-radius: 16px;
   padding: 25px 20px;
   text-align: center;
-  color: #fff;
   backdrop-filter: blur(8px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease-in-out;
 }
-
 .mode-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25);
@@ -76,111 +174,70 @@ header h1 {
   font-size: 1.6em;
   margin-bottom: 10px;
 }
-
 .mode-card p {
   font-size: 1em;
   opacity: 0.9;
   margin-bottom: 20px;
 }
 
-/* === Inputs & Buttons inside cards === */
-.mode-card input,
-.mode-card select {
-  width: 80%;
-  padding: 10px;
-  margin-bottom: 12px;
-  border-radius: 8px;
-  border: none;
-  text-align: center;
-  outline: none;
-  font-size: 0.95em;
-}
-
 .enter-mode {
   padding: 10px 18px;
   border: none;
   border-radius: 30px;
-  background-color: #00adb5;
-  color: #fff;
+  background-color: rgb(220, 65, 135);
+  color: #000;
   font-size: 0.95em;
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
 .enter-mode:hover {
-  background-color: #ff416c;
+  background-color: yellow;
   transform: translateY(-2px);
   box-shadow: 0 0 10px rgba(255, 65, 108, 0.7);
 }
 
-/* === Hidden Sections === */
-.hidden {
-  display: none;
+button {
+  color: #fff;
 }
 
-/* === Map View Section === */
-#map-section {
+/* Back Button */
+#back-button {
+  align-self: flex-start;
+  margin: 40px 0 0 10%;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 30px;
+  background-color: yellow;
+  color: #000;
+  font-size: 0.95em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+#back-button:hover {
+  background-color: rgb(220, 65, 135);
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(0, 173, 181, 0.7);
+}
+
+/* === Mode Content === */
+#mode-content {
   width: 100%;
   text-align: center;
-  position: relative;
-  padding: 80px 0 60px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
 }
 
-#map-section h2 {
-  margin-top: 80px;
-  color: #fff;
+#mode-content h2 {
+  margin-top: 40px;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
-/* === Back Button === */
-#back-home {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 30px;
-  background-color: #393e46;
-  color: #fff;
-  cursor: pointer;
-  transition: 0.3s;
-  z-index: 1001;
+.hidden {
+  display: none !important;
 }
 
-#back-home:hover {
-  background-color: #00adb5;
-}
-
-/* === Reset View Button === */
-#reset-view {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  z-index: 1000;
-  padding: 10px 18px;
-  border: none;
-  border-radius: 30px;
-  background-color: #1d2b64;
-  color: #fff;
-  font-family: "Aboreto", cursive;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  cursor: pointer;
-  box-shadow: 0 0 15px rgba(29, 43, 100, 0.6);
-  transition: all 0.3s ease-in-out;
-}
-
-#reset-view:hover {
-  background-color: #ff416c;
-  box-shadow: 0 0 25px rgba(255, 65, 108, 0.8);
-  transform: translateY(-2px);
-}
-
-/* === Map Container === */
 #map {
   width: 80%;
   height: 500px;
@@ -188,11 +245,8 @@ header h1 {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-/* === Info Box for City Playlists === */
 #info {
   backdrop-filter: blur(6px);
-  background: #f5f5f5;
-  background: rgba(245, 245, 245, 0.95);
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
   margin-top: 10px;
@@ -202,64 +256,8 @@ header h1 {
   width: 80%;
 }
 
-#info h2 {
-  margin-top: 0;
-  color: #222;
-}
-
-/* === Playlist Styles === */
-.playlist-item {
-  list-style: none;
-  margin: 10px 0;
-}
-
-.playlist-grid {
-  padding: 0;
-  margin: 0;
-}
-
-.playlist-card {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  background: #fff;
-  padding: 12px;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
-}
-
-.playlist-card:hover {
-  transform: translateY(-3px);
-}
-
-.playlist-card img {
-  aspect-ratio: 1;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 8px 8px 0 0;
-}
-
-.playlist-img {
-  width: 100px;
-  height: 100px;
-  border-radius: 10px;
-  object-fit: cover;
-}
-
-.playlist-info {
-  flex: 1;
-}
-
-/* === Plane Icon === */
-.plane-icon {
-  font-size: 28px;
-  text-shadow: 0 0 6px #00adb5, 0 0 12px #00adb5;
-}
-
 .mood-btn {
   background: #333;
-  color: white;
   border: none;
   border-radius: 8px;
   padding: 10px 16px;
@@ -268,25 +266,21 @@ header h1 {
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
 .mood-btn:hover {
   background: #ff6600;
   transform: scale(1.05);
 }
 
-/* === Responsive Adjustments === */
+.hidden {
+  display: none !important;
+}
+
 @media (max-width: 768px) {
   #map {
     width: 95%;
     height: 400px;
   }
-
   #info {
     width: 95%;
-  }
-
-  #mode-grid {
-    width: 90%;
-    gap: 20px;
   }
 }
