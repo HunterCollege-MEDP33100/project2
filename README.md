@@ -6,7 +6,7 @@ Gabrielle, Scott, Jackeline
 
 ## Live Demo
 
-- Include a link to the live version of the project hosted on Render.
+- [https://project2-q573.onrender.com](https://project2-q573.onrender.com)
 
 ## Project Overview
 Purpose of the project:
