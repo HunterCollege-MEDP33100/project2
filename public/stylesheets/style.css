@@ -73,3 +73,20 @@ h1 {
   display: none;
 }
 
+
+
+/* Artist names hover animation */
+.artist-name {
+  cursor: pointer;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.3s ease; 
+}
+
+/* Hover effect for artist names */
+.artist-name:hover {
+  color: #1DB954; 
+  text-decoration: underline;
+  transform: scale(1.05);
+}
+
