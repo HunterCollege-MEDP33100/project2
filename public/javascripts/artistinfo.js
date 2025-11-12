@@ -22,16 +22,23 @@ document.addEventListener('click', async (event) => {
     const artist = searchData.artists.items[0];
     if (!artist) return;
 
+    //fetches about-me data from artists.json 
+    const aboutRes = await fetch('/artists.json')
+    const aboutData = await aboutRes.json()
+    const artistAboutText = aboutData[artistName]?.about
+
     // Update artist info section
     const infoSection = document.getElementById('artist-info');
     const artistImg = document.getElementById('artist-image');
     const artistNameEl = document.getElementById('artist-name');
     const artistPopularity = document.getElementById('artist-popularity');
+    const artistAbout = document.getElementById('artist-about')
     const artistPreview = document.getElementById('artist-preview');
 
     artistImg.src = artist.images?.[0]?.url || '';
     artistNameEl.textContent = artist.name;
     artistPopularity.textContent = `Popularity: ${artist.popularity}`;
+    artistAbout.textContent = artistAboutText
 
     // Fetch artist top tracks (for preview audio)
     const tracksResponse = await fetch(`https://api.spotify.com/v1/artists/${artist.id}/top-tracks?market=US`, {

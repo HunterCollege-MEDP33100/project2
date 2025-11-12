@@ -110,8 +110,8 @@ async function displayPopularity() {
     });
 
     // put 'popularity' div ABOVE the artist info container
-const artistInfo = document.getElementById('artist-info');
-document.body.insertBefore(div, artistInfo);
+    const artistInfo = document.getElementById('artist-info');
+    document.body.insertBefore(div, artistInfo);
 
 }
 
