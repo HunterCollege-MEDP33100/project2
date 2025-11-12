@@ -75,18 +75,27 @@ h1 {
 
 
 
-/* Artist names hover animation */
-.artist-name {
+
+/* Artist buttons hover effect */
+.artist-button {
+  background-color: #1DB954; 
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 5px 0;
+  border-radius: 8px;
   cursor: pointer;
-  color: #333;
-  text-decoration: none;
+  font-size: 16px;
   transition: all 0.3s ease; 
 }
 
-/* Hover effect for artist names */
-.artist-name:hover {
-  color: #1DB954; 
-  text-decoration: underline;
-  transform: scale(1.05);
+.artist-button:hover {
+  background-color: white; 
+  color: black;             
+  transform: scale(1.05);   
+}
+
+.artist-button:hover {
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
 }
 
