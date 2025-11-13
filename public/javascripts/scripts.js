@@ -56,8 +56,8 @@ async function displayAll() {
     boroEl.innerText = "There is a total of " + manhattanKiosks.length + " Kiosks in Manhattan, " + bronxKiosks.length + " Kiosks in the Bronx, " + brooklynKiosks.length + " Kiosks in Brooklyn, " + queensKiosks.length + " Kiosks in Queens, and " + statenKiosks.length + " Kiosks in Staten Island."
     data.forEach(item =>{
         if (item.latitude && item.longitude) {
-            L.marker([item.latitude, item.longitude],{icon: blueIcon})
-            .addTo(markerLayerGroup);
+            const marker = L.marker([item.latitude, item.longitude],{icon: blueIcon}).addTo(markerLayerGroup);
+            marker.bindPopup(item.address + ', ' + item.city + ', ' + item.state + ', '+ item.zip);
         }
     });
 }
@@ -83,8 +83,8 @@ async function displayWifi() {
     boroEl.innerText = "There is a total of " + manhattanKiosks.length + " Kiosks in Manhattan, " + bronxKiosks.length + " Kiosks in the Bronx, " + brooklynKiosks.length + " Kiosks in Brooklyn, " + queensKiosks.length + " Kiosks in Queens, and " + statenKiosks.length + " Kiosks in Staten Island."
     wifiStatus.forEach(item =>{
         if (item.latitude && item.longitude) {
-            L.marker([item.latitude, item.longitude],{icon: grayIcon})
-            .addTo(markerLayerGroup);  
+            const marker = L.marker([item.latitude, item.longitude],{icon: blueIcon}).addTo(markerLayerGroup);
+            marker.bindPopup(item.address + ', ' + item.city + ', ' + item.state + ', '+ item.zip);
         }
     })
 }
@@ -108,8 +108,8 @@ async function displayNoWifi() {
     boroEl.innerText = "There is a total of " + manhattanKiosks.length + " Kiosks in Manhattan, " + bronxKiosks.length + " Kiosks in the Bronx, " + brooklynKiosks.length + " Kiosks in Brooklyn, " + queensKiosks.length + " Kiosks in Queens, and " + statenKiosks.length + " Kiosks in Staten Island."
     wifiStatus.forEach(item =>{
         if (item.latitude && item.longitude) {
-            L.marker([item.latitude, item.longitude])
-            .addTo(markerLayerGroup);  
+            const marker = L.marker([item.latitude, item.longitude],{icon: blueIcon}).addTo(markerLayerGroup);
+            marker.bindPopup(item.address + ', ' + item.city + ', ' + item.state + ', '+ item.zip);
         }
     })
 }
@@ -133,8 +133,8 @@ async function displayTablet() {
     console.log(totalKiosksDisplayed);
     tabletStatus.forEach(item =>{
         if (item.latitude && item.longitude) {
-            L.marker([item.latitude, item.longitude],{icon: blackIcon})
-            .addTo(markerLayerGroup);  
+            const marker = L.marker([item.latitude, item.longitude],{icon: blueIcon}).addTo(markerLayerGroup);
+            marker.bindPopup(item.address + ', ' + item.city + ', ' + item.state + ', '+ item.zip);
         }
     })    
 }
@@ -158,8 +158,8 @@ async function displayNoTablet() {
     console.log(totalKiosksDisplayed);
     tabletStatus.forEach(item =>{
         if (item.latitude && item.longitude) {
-            L.marker([item.latitude, item.longitude])
-            .addTo(markerLayerGroup);  
+            const marker = L.marker([item.latitude, item.longitude],{icon: blueIcon}).addTo(markerLayerGroup);
+            marker.bindPopup(item.address + ', ' + item.city + ', ' + item.state + ', '+ item.zip);
         }
     })    
 }

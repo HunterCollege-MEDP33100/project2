@@ -10,7 +10,7 @@ Samantha Cobty and Daniel Martinez
 
 ## Project Overview
 
-Our project is to simply bring to the attention of the people the nearest 
+Our project is to simply bring to the attention of the people the nearest LinkNYC Kiosk near them and 
 
 - Briefly describe the purpose of the project.
 - Explain what live data set was used, and what you hope users would learn about the data set by using your project
