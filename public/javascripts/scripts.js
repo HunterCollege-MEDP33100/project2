@@ -22,6 +22,7 @@ var KioskIcon = L.Icon.extend({
 var blackIcon = new KioskIcon({iconUrl: 'images/kiosk-black.png'}),
     blueIcon = new KioskIcon({iconUrl: 'images/kiosk-blue.png'}),
     grayIcon = new KioskIcon({iconUrl: 'images/kiosk-gray.png'});
+    blankIcon = new KioskIcon({iconUrl: 'images/kiosk.png'});
 
 
 //adds the viewable part of the map aka tile
@@ -98,7 +99,7 @@ async function displayNoWifi() {
     displayEl.innerText = "There is a total of "+ totalKiosksDisplayed + " Kiosks on the map currently";
     wifiStatus.forEach(item =>{
         if (item.latitude && item.longitude) {
-            L.marker([item.latitude, item.longitude])
+            L.marker([item.latitude, item.longitude],{icon: blackIcon})
             .addTo(markerLayerGroup);  
         }
     })
@@ -117,7 +118,7 @@ async function displayTablet() {
     console.log(totalKiosksDisplayed);
     tabletStatus.forEach(item =>{
         if (item.latitude && item.longitude) {
-            L.marker([item.latitude, item.longitude],{icon: blackIcon})
+            L.marker([item.latitude, item.longitude],{icon: blankIcon})
             .addTo(markerLayerGroup);  
         }
     })    
@@ -136,7 +137,7 @@ async function displayNoTablet() {
     console.log(totalKiosksDisplayed);
     tabletStatus.forEach(item =>{
         if (item.latitude && item.longitude) {
-            L.marker([item.latitude, item.longitude])
+            L.marker([item.latitude, item.longitude],{icon: blackIcon})
             .addTo(markerLayerGroup);  
         }
     })    

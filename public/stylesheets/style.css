@@ -81,8 +81,16 @@ button:hover{
   background-color: #efa508;
 }
 
+#show-tablet-down {
+  background-color: #7a99a5;
+}
+
 #show-wifi-up {
   background-color: #009933;
+}
+
+#show-wifi-down {
+  background-color: #7a99a5;
 }
 
 #show-all-kiosks {
