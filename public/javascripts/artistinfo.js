@@ -1,3 +1,5 @@
+let aboutData = null
+
 // Attach event listener to artist buttons after they are created
 document.addEventListener('click', async (event) => {
   if (event.target.classList.contains('artist-button')) {
@@ -8,6 +10,21 @@ document.addEventListener('click', async (event) => {
       btn.classList.remove('active');
     });
     event.target.classList.add('active');
+
+    //lazy loading/storing in local storage artists.json
+    if (!aboutData) {
+      const stored = localStorage.getItem('aboutData')
+      if (stored) {
+        aboutData = JSON.parse(stored)
+      } else {
+        try {
+          const aboutRes = await fetch('/artists.json')
+          aboutData = await aboutRes.json()
+        } catch (err) {
+          console.error('Artist data not loaded', err)
+        }
+      }
+    }
 
     // Get token
     const token = localStorage.getItem('spotifyToken');
@@ -22,9 +39,7 @@ document.addEventListener('click', async (event) => {
 
     if (!artist) return;
 
-    //fetches about-me data from artists.json 
-    const aboutRes = await fetch('/artists.json')
-    const aboutData = await aboutRes.json()
+    //get artists about data
     const artistAboutText = aboutData[artistName]?.about
 
     // Update artist info section

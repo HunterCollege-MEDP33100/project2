@@ -26,7 +26,7 @@
     - **Languages**: HTML, CSS, JavaScript
     - **Libraries**: (e.g., GSAP for animations)
     - **APIs**: Public APIs where the data set comes from
-    - **Other**: Figma for design, OpenAI for code, Wikipedia for artist information, Spotify's Web API
+    - **Other**: Figma for design, OpenAI for code, Wikipedia for artist information, Spotify's Web API, JSON Minify to minify artists.json
 
 ## Credits
 Artist info:
