@@ -153,36 +153,42 @@ AllTreesBttn.addEventListener('click', function(){
 });
 
 
+//there are 10 excellent trees
 excellentBttn.addEventListener('click', function(){
     map.remove();
     createMap();
     addExcellentTrees(dataArr);
 });
 
+//there are 368 good trees
 goodBttn.addEventListener('click', function(){
     map.remove();
     createMap();
     addGoodTrees(dataArr);
 });
 
+//there are 334 fair trees
 fairBttn.addEventListener('click', function(){
     map.remove();
     createMap();
     addFairTrees(dataArr);
 });
 
+//there are 75 poor trees
 poorBttn.addEventListener('click', function(){
     map.remove();
     createMap();
     addPoorTrees(dataArr);
 });
 
+//there are 17 critical trees
 criticalBttn.addEventListener('click', function(){
     map.remove();
     createMap();
     addCriticalTrees(dataArr);
 });
 
+//there are 136 dead trees 
 deadBttn.addEventListener('click', function(){
     map.remove();
     createMap();
