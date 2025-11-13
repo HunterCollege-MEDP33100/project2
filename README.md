@@ -7,7 +7,7 @@
 
 ## Live Demo
 
-- https://project2-ka00.onrender.com
+- https://project2-hzfz.onrender.com
 
 ## Project Overview
 
@@ -51,4 +51,8 @@ Code reference/tutorial:
 
 ## Future Enhancements
 
-- List any features you would’ve liked to add if given more time
+- If we'd had more time, we would have liked to:
+
+- Retrieve artist data from an API.
+
+- Add more animations to improve the user experience.
