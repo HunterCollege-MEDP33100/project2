@@ -8,6 +8,23 @@ var markerLayerGroup = L.layerGroup().addTo(map);
 var totalKiosksDisplayed = ''
 var displayEl = document.getElementById('totalCount')
 var boroEl = document.getElementById('boroughCount')
+
+
+//different marker icon options
+var KioskIcon = L.Icon.extend({
+    options: {
+        iconSize:     [20, 20],
+        // Note: Icon anchor needs adjustment for a 20x20 icon size
+        iconAnchor:   [10, 10], 
+        popupAnchor:  [0, -10]
+    }
+});
+
+var blackIcon = new KioskIcon({iconUrl: 'images/kiosk-black.png'}),
+    blueIcon = new KioskIcon({iconUrl: 'images/kiosk-blue.png'}),
+    grayIcon = new KioskIcon({iconUrl: 'images/kiosk-gray.png'});
+
+
 //adds the viewable part of the map aka tile
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 17,
@@ -39,7 +56,7 @@ async function displayAll() {
     boroEl.innerText = "There is a total of" + manhattanKiosks.length + " Kiosks in Manhattan." + " There is a total "
     data.forEach(item =>{
         if (item.latitude && item.longitude) {
-            L.marker([item.latitude, item.longitude])
+            L.marker([item.latitude, item.longitude],{icon: blueIcon})
             .addTo(markerLayerGroup);
         }
     });
@@ -60,7 +77,7 @@ async function displayWifi() {
     displayEl.innerText = "There is a total of "+ totalKiosksDisplayed + " Kiosks on the map currently";
     wifiStatus.forEach(item =>{
         if (item.latitude && item.longitude) {
-            L.marker([item.latitude, item.longitude])
+            L.marker([item.latitude, item.longitude],{icon: grayIcon})
             .addTo(markerLayerGroup);  
         }
     })
@@ -101,7 +118,7 @@ async function displayTablet() {
     console.log(totalKiosksDisplayed);
     tabletStatus.forEach(item =>{
         if (item.latitude && item.longitude) {
-            L.marker([item.latitude, item.longitude])
+            L.marker([item.latitude, item.longitude],{icon: blackIcon})
             .addTo(markerLayerGroup);  
         }
     })    
