@@ -1,19 +1,20 @@
 body {
   padding: 50px;
-  font-family: "Funnel Display", sans-serif;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     background-color: #f9f9f9;
-  color: #000000;
- 
+  color: #333;
+  transition: background-color 0.3s ease;
 }
-p {
-  font-size: 17px;
-  max-width: 1100px;   /* or any width you prefer */
-  margin: 0 auto;     /* centers the paragraph horizontally */
-  line-height: 1.6;   /* improves readability */
-  padding: 0 1rem; 
 
-
+body{
+  animation:fadeIn 1.2s ease-in;
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+/*link color*/
 a {
   color: #00B7FF;
 }
@@ -25,18 +26,24 @@ a {
   justify-content: center;
 
 } */
+/* map section*/
+
+#mymap{
+  height: 500px;
+  width: 700px;
+}
 
 /* Navbar container */
 nav {
   background-color: #ffffff;
   padding: 1rem 0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  position:sticky;/* Make navbar stick to top */
+  top:0;
+  z-index:100;
 }
 
-/* List layout */
+/*  navbar List layout */
 nav ul {
   list-style: none;
   display: flex;
@@ -59,22 +66,25 @@ nav a {
 nav a:hover {
   color: #4caf50;
   border-bottom: 2px solid #4caf50;
+  transform: translateY(-3px); /* small lift effect */
+
 }
 
 /* Title style */
-h1{
+h1 {
   text-align: center;
   margin: 2rem 0 1rem;
-  font-size: 3rem;
-  color: #1f4529;
+  font-size: 2.2rem;
+ letter-spacing: 1px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  animation: slideDown 0.7s ease;
 }
-h2{
-  margin: 2rem 0 1rem;
-  font-size: 1.5 rem 0 0.5rem;
-  color: #572c2c;
 
-
+@keyframes slideDown {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
+
 /* Gallery styles */
 .gallery-container {
   display: grid;
@@ -84,7 +94,7 @@ h2{
 }
 
 .gallery-item {
-  background: white;
+  background: rgb(251, 3, 3);
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   text-align: center;
@@ -103,33 +113,13 @@ h2{
   border-radius: 8px;
 }
 
-.quick-facts {
-  text-align: center;
-  padding: 4rem 2rem;
-  background: #f9f9f9;
-}
-
-.quick-facts h2 {
-  font-size: 1.7rem;
-  color: #572c2c;
-  margin-bottom: 2rem;
-}
-
-
-.card-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 7rem; 
-}
-
-.flip-card {
-  background: transparent;
-  width: 240px;
+.gallery-item img {
+  width: 100%;
   height: 200px;
-  perspective: 1000px;
-  cursor: pointer;
-  border-radius: 12px;
+  object-fit: cover;
+  border-radius: 8px;
+  filter: brightness(95%);
+  transition: filter 0.3s, transform 0.3s;
 }
 
 .flip-inner {
@@ -331,3 +321,7 @@ img.between-text {
 .key-box.critical { background-color: #E74C3C; width: 100px; height: 30px;}   
 .key-box.dead { background-color: #000000;width: 100px; height: 30px; }       
     
+.gallery-item img:hover {
+  filter: brightness(110%);
+  transform: scale(1.05);
+}
