@@ -7,6 +7,7 @@ document.getElementById('map')
 var markerLayerGroup = L.layerGroup().addTo(map); 
 var totalKiosksDisplayed = ''
 var displayEl = document.getElementById('totalCount')
+var boroEl = document.getElementById('boroughCount')
 //adds the viewable part of the map aka tile
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 17,
@@ -29,7 +30,13 @@ async function displayAll() {
     var data = await fetchData();
     totalKiosksDisplayed = data.length
     console.log(totalKiosksDisplayed);
+    manhattanKiosks = data.filter(item => (item.boro === 'Manhattan'));
+    bronxKiosks = data.filter(item => (item.boro === 'Bronx'));
+    brooklynKiosks = data.filter(item => (item.boro === 'Brooklyn'));
+    queensKiosks = data.filter(item => (item.boro === 'Queens'));
+    statenKiosks = data.filter(item => (item.boro === 'Staten Island'));
     displayEl.innerText = "There is a total of "+ totalKiosksDisplayed + " Kiosks on the map currently";
+    boroEl.innerText = "There is a total of" + manhattanKiosks.length + " Kiosks in Manhattan." + " There is a total "
     data.forEach(item =>{
         if (item.latitude && item.longitude) {
             L.marker([item.latitude, item.longitude])
@@ -123,23 +130,20 @@ var tabletOffFilter = document.getElementById('show-tablet-down');
 
 tabletOffFilter.addEventListener('click', displayNoTablet);
 
-var boroArray = []
 
-// async function boroughDivide() {
-//     var data = await fetchData();
-//     manhattanKiosks = data.filter(item => (item.boro === 'Manhattan'));
-//     console.log(manhattanKiosks);
-//     bronxKiosks = data.filter(item => (item.boro === 'Bronx'));
-//     console.log(bronxKiosks);
-//     brooklynKiosks = data.filter(item => (item.boro === 'Brooklyn'));
-//     console.log(brooklynKiosks);
-//     queensKiosks = data.filter(item => (item.boro === 'Queens'));
-//     console.log(queensKiosks);
-//     statenKiosks = data.filter(item => (item.boro === 'Staten Island'));
-//     console.log(statenKiosks);
-//     boroArray = [manhattanKiosks.length, bronxKiosks.length, brooklynKiosks.length, queensKiosks.length, statenKiosks.length]
-//     console.log(boroArray)
-// }
+async function boroughDivide() {
+    var data = await fetchData();
+    manhattanKiosks = data.filter(item => (item.boro === 'Manhattan'));
+    console.log(manhattanKiosks);
+    bronxKiosks = data.filter(item => (item.boro === 'Bronx'));
+    console.log(bronxKiosks);
+    brooklynKiosks = data.filter(item => (item.boro === 'Brooklyn'));
+    console.log(brooklynKiosks);
+    queensKiosks = data.filter(item => (item.boro === 'Queens'));
+    console.log(queensKiosks);
+    statenKiosks = data.filter(item => (item.boro === 'Staten Island'));
+    console.log(statenKiosks);
+}
 // boroughDivide();
 
 
