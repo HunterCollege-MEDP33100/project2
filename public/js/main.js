@@ -139,7 +139,7 @@ function goBack() {
   modeGrid.classList.remove("hidden");
   mapEl.classList.add("hidden");
   infoEl.innerHTML = "";
-  document.querySelector(".logo").src = "images/mylisteningstationbr.png";
+  document.querySelector(".logo").src = "images/listeningstation.png";
 }
 
 backButton.addEventListener("click", goBack);
@@ -172,7 +172,7 @@ document
         renderPlaylists(json.playlists, mood);
       })
     );
-    document.querySelector(".logo").src = "images/mymoodbr.png";
+    document.querySelector(".logo").src = "images/mymood.png";
   });
 
 document
@@ -195,7 +195,7 @@ document
         renderPlaylists(json.playlists, genre);
       })
     );
-    document.querySelector(".logo").src = "images/mystylebr.png";
+    document.querySelector(".logo").src = "images/mystyle.png";
   });
 
 document
