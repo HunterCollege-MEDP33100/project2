@@ -8,7 +8,7 @@ Hannah
 
 ## Live Demo
 
-- Include a link to the live version om f the project hosted on Render.
+(https://project2-g0q4.onrender.com/)
 
 ## Project Overview
 
@@ -44,4 +44,5 @@ https://www.nycgovparks.org/learn/trees-and-plants/top-five-most-common-street-t
 
 ## Future Enhancements
 
-- List any features you would’ve liked to add if given more time
+
+One future  improvement that  would have been interesting would have been more experimentation with the keyframes animations that were put into the css portion of the project. A future feature is adding in  more cities from either within one country,  comparing it  one country/state to other countries/state  or have a country as a whole. A future improvement  could be finding a way to collect the date for peoples favorites trees whether it be from a region or on a greater scale
