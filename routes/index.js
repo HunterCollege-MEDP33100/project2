@@ -6,15 +6,23 @@ var router = express.Router();
 /* GET the home page. */
 router.get('/', function(req, res, next) {
 
-    res.render('index', {
+    res.render('conditions', {
 
     });
 });
 
-/* GET the conditions page. */
+/*This is a work around so that you can still go back to the home map page */
 router.get('/conditions', function(req, res, next) {
 
     res.render('conditions', {
+
+    });
+});
+
+/* GET the About Project page. */
+router.get('/index', function(req, res, next) {
+
+    res.render('index', {
 
     });
 });
