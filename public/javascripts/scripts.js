@@ -10,7 +10,6 @@ var markerLayerGroup = L.layerGroup().addTo(map);
 var KioskIcon = L.Icon.extend({
     options: {
         iconSize:     [20, 20],
-        // Note: Icon anchor needs adjustment for a 20x20 icon size
         iconAnchor:   [10, 10], 
         popupAnchor:  [0, -10]
     }
