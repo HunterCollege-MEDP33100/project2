@@ -1,2 +1,58 @@
-<h1>{{title}}</h1>
-<p>Your HTML goes here</p>
+<header>
+  <h1 class="page-title">{{h1}}</h1>
+  <p class="subtitle">Discover and explore the best anime from MyAnimeList</p>
+
+  <div class="controls">
+    <!-- search -->
+    <div class="control-group" style="flex: 1; max-width: 400px;">
+      <input 
+        type="text" 
+        id="search" 
+        placeholder="Search" 
+        style="width: 100%; padding: 0.625rem 1.25rem; background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border); border-radius: 0.75rem; font-size: 0.9rem;">
+    </div>
+
+    <!-- controls and filter -->
+    <div class="control-group">
+      <label class="control-label" for="filter-type">Type:</label>
+      <select id="filter-type">
+        <option value="tv" selected>TV Series</option>
+        <option value="movie">Movies</option>
+        <option value="ova">OVA</option>
+        <option value="special">Special</option>
+        <option value="ona">ONA</option>
+        <option value="music">Music</option>
+      </select>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label" for="sort-type">Sort:</label>
+      <select id="sort-type">
+        <option value="score">Score (High to Low)</option>
+        <option value="rank">Rank (Best First)</option>
+        <option value="title">Title (A-Z)</option>
+      </select>
+    </div>
+
+    <!-- toggle between view -->
+    <div class="view-toggle" id="view-toggle">
+      <button data-view="grid" class="active">
+        <span style="font-size: 0.875rem;">⊞ Grid</span>
+      </button>
+      <button data-view="list">
+        <span style="font-size: 0.875rem;">☰ List</span>
+      </button>
+    </div>
+
+    <button id="refresh" title="Refresh data">
+      <span style="font-size: 1rem;">↻</span> Refresh
+    </button>
+  </div>
+</header>
+
+<main>
+  <div id="anime_container" class="anime-container">
+    <div class="loading">Loading amazing anime content</div>
+  </div>
+  <button id="loadMore" class="hidden">Load More Anime</button>
+</main>

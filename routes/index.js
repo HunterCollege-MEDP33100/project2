@@ -1,9 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Project 2' });
+  res.render('index', 
+    { 
+      title: 'Anime Explorer - Discover Amazing Anime', 
+      h1: 'Anime Explorer',
+    });
 });
 
 module.exports = router;
