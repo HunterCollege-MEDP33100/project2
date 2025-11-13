@@ -6,7 +6,7 @@ Samantha Cobty and Daniel Martinez
 
 ## Live Demo
 
-- Include a link to the live version of the project hosted on Render.
+https://linknycstatus.onrender.com 
 
 ## Project Overview
 Our aim is to help users learn about LinkNYC kiosks. Our site provides live information about the kiosks’ location, wifi status, and tablet accessibility. Users can visualize the accessibility of these kiosks through the interactive map display and live kiosk count displayed on the site.
