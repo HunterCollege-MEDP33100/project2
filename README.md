@@ -31,8 +31,16 @@ The different kinds of user interactions we have is filtering data, changing the
 
 ## Credits
 
-- List any third-party assets used in the project (e.g., sound effects, images, fonts) and provide proper attribution.
-- Acknowledge any resources, tutorials, or references you used to help complete the project.
+Unsplash: https://unsplash.com/photos/a-bridge-over-a-river-surrounded-by-trees-CgiWNkPmubw 
+Tree Icon: https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.vecteezy.com%2Fpng%2F46853543-tree-in-infrared-on-transparent-background&psig=AOvVaw21xc08qX1H1woUTjmfHNmL&ust=1763096744562000&source=images&cd=vfe&opi=89978449&ved=0CBkQjhxqFwoTCKCauKut7pADFQAAAAAdAAAAABAT 
+Sources for the facts written out: 
+https://www.epa.gov/heatislands 
+https://research.fs.usda.gov/centers/ccrc 
+https://www.arborday.org/value 
+https://research.fs.usda.gov/treesearch/57234#:~:text=Abstract,is%20estimated%20at%20$5.7%20billion. 
+https://www.nycgovparks.org/learn/trees-and-plants/top-five-most-common-street-trees-in-nyc#:~:text=Meet%20the%20top%205%20most,foot%20or%20more%20in%20length. (it was working earlier, says permission denied as I'm adding it here??)
+
+
 
 ## Future Enhancements
 
