@@ -96,8 +96,9 @@ wifiFilter.addEventListener('click', displayWifi)
 async function displayNoWifi() {
     markerLayerGroup.clearLayers(); 
     var data = await fetchData();
-    wifiStatus = data.filter(item => (item.wifi_status = 'down'))
+    wifiStatus = data.filter(item => (item.wifi_status === 'down'))
     totalKiosksDisplayed = wifiStatus.length
+    console.log(wifiStatus)
     console.log(totalKiosksDisplayed);
     manhattanKiosks = wifiStatus.filter(item => (item.boro === 'Manhattan'));
     bronxKiosks = wifiStatus.filter(item => (item.boro === 'Bronx'));

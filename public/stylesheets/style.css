@@ -8,7 +8,7 @@ body {
   background-color: #0e0e0e;
 }
 
-html{
+html {
   padding: 0px;
   margin: 0px;
 }
@@ -32,20 +32,20 @@ ul li {
   margin-left: 1em;
 }
 
-ul li:first-child{
-  margin-left: 0px;
+ul li:first-child {
+  margin-left: 0rem;
   cursor: none;
 }
 
 /*Design of header leading to show the interaction*/
-h2{
+h2 {
   padding-top: 2rem;
   padding-left: 2rem;
   color: #ffffff;
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   font-size: 35px;
-  
+
 }
 
 #screen {
@@ -85,8 +85,8 @@ button {
   border-radius: 2px;
 }
 
-button:hover{
-  box-shadow:0 5px 10px 0 rgba(0,0,0,0.6)
+button:hover {
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.6)
 }
 
 #show-tablet-up {
@@ -164,6 +164,7 @@ a:hover {
   height: 25px;
   width: 25px;
 }
+
 *::-webkit-scrollbar-track {
   border-radius: 0px;
   background-color: #7a99a5;
