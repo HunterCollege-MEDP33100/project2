@@ -53,7 +53,7 @@ async function displayAll() {
     queensKiosks = data.filter(item => (item.boro === 'Queens'));
     statenKiosks = data.filter(item => (item.boro === 'Staten Island'));
     displayEl.innerText = "There is a total of "+ totalKiosksDisplayed + " Kiosks on the map currently";
-    boroEl.innerText = "There is a total of" + manhattanKiosks.length + " Kiosks in Manhattan." + " There is a total "
+    boroEl.innerText = "There is a total of " + manhattanKiosks.length + " Kiosks in Manhattan, " + bronxKiosks.length + " Kiosks in the Bronx, " + brooklynKiosks.length + " Kiosks in Brooklyn, " + queensKiosks.length + " Kiosks in Queens, and " + statenKiosks.length + " Kiosks in Staten Island."
     data.forEach(item =>{
         if (item.latitude && item.longitude) {
             L.marker([item.latitude, item.longitude],{icon: blueIcon})
@@ -74,7 +74,13 @@ async function displayWifi() {
     wifiStatus = data.filter(item => (item.wifi_status === 'up'));
     totalKiosksDisplayed = wifiStatus.length
     console.log(totalKiosksDisplayed);
+    manhattanKiosks = wifiStatus.filter(item => (item.boro === 'Manhattan'));
+    bronxKiosks = wifiStatus.filter(item => (item.boro === 'Bronx'));
+    brooklynKiosks = wifiStatus.filter(item => (item.boro === 'Brooklyn'));
+    queensKiosks = wifiStatus.filter(item => (item.boro === 'Queens'));
+    statenKiosks = wifiStatus.filter(item => (item.boro === 'Staten Island'));
     displayEl.innerText = "There is a total of "+ totalKiosksDisplayed + " Kiosks on the map currently";
+    boroEl.innerText = "There is a total of " + manhattanKiosks.length + " Kiosks in Manhattan, " + bronxKiosks.length + " Kiosks in the Bronx, " + brooklynKiosks.length + " Kiosks in Brooklyn, " + queensKiosks.length + " Kiosks in Queens, and " + statenKiosks.length + " Kiosks in Staten Island."
     wifiStatus.forEach(item =>{
         if (item.latitude && item.longitude) {
             L.marker([item.latitude, item.longitude],{icon: grayIcon})
@@ -90,13 +96,16 @@ wifiFilter.addEventListener('click', displayWifi)
 async function displayNoWifi() {
     markerLayerGroup.clearLayers(); 
     var data = await fetchData();
-    wifiStatus = data.filter(item => {
-    const status = item.wifi_status;
-    return status === 'down' || status == null; // null or undefined
-});
+    wifiStatus = data.filter(item => (item.wifi_status = 'down'))
     totalKiosksDisplayed = wifiStatus.length
     console.log(totalKiosksDisplayed);
+    manhattanKiosks = wifiStatus.filter(item => (item.boro === 'Manhattan'));
+    bronxKiosks = wifiStatus.filter(item => (item.boro === 'Bronx'));
+    brooklynKiosks = wifiStatus.filter(item => (item.boro === 'Brooklyn'));
+    queensKiosks = wifiStatus.filter(item => (item.boro === 'Queens'));
+    statenKiosks = wifiStatus.filter(item => (item.boro === 'Staten Island'));
     displayEl.innerText = "There is a total of "+ totalKiosksDisplayed + " Kiosks on the map currently";
+    boroEl.innerText = "There is a total of " + manhattanKiosks.length + " Kiosks in Manhattan, " + bronxKiosks.length + " Kiosks in the Bronx, " + brooklynKiosks.length + " Kiosks in Brooklyn, " + queensKiosks.length + " Kiosks in Queens, and " + statenKiosks.length + " Kiosks in Staten Island."
     wifiStatus.forEach(item =>{
         if (item.latitude && item.longitude) {
             L.marker([item.latitude, item.longitude])
@@ -114,7 +123,13 @@ async function displayTablet() {
     var data = await fetchData();
     tabletStatus = data.filter(item => (item.tablet_status === 'up'));
     totalKiosksDisplayed = tabletStatus.length
+    manhattanKiosks = tabletStatus.filter(item => (item.boro === 'Manhattan'));
+    bronxKiosks = tabletStatus.filter(item => (item.boro === 'Bronx'));
+    brooklynKiosks = tabletStatus.filter(item => (item.boro === 'Brooklyn'));
+    queensKiosks = tabletStatus.filter(item => (item.boro === 'Queens'));
+    statenKiosks = tabletStatus.filter(item => (item.boro === 'Staten Island'));
     displayEl.innerText = "There is a total of "+ totalKiosksDisplayed + " Kiosks on the map currently";
+    boroEl.innerText = "There is a total of " + manhattanKiosks.length + " Kiosks in Manhattan, " + bronxKiosks.length + " Kiosks in the Bronx, " + brooklynKiosks.length + " Kiosks in Brooklyn, " + queensKiosks.length + " Kiosks in Queens, and " + statenKiosks.length + " Kiosks in Staten Island."
     console.log(totalKiosksDisplayed);
     tabletStatus.forEach(item =>{
         if (item.latitude && item.longitude) {
@@ -133,7 +148,13 @@ async function displayNoTablet() {
     var data = await fetchData();
     tabletStatus = data.filter(item => (item.tablet_status === 'down'));
     totalKiosksDisplayed = tabletStatus.length
+    manhattanKiosks = tabletStatus.filter(item => (item.boro === 'Manhattan'));
+    bronxKiosks = tabletStatus.filter(item => (item.boro === 'Bronx'));
+    brooklynKiosks = tabletStatus.filter(item => (item.boro === 'Brooklyn'));
+    queensKiosks = tabletStatus.filter(item => (item.boro === 'Queens'));
+    statenKiosks = tabletStatus.filter(item => (item.boro === 'Staten Island'));
     displayEl.innerText = "There is a total of "+ totalKiosksDisplayed + " Kiosks on the map currently";
+    boroEl.innerText = "There is a total of " + manhattanKiosks.length + " Kiosks in Manhattan, " + bronxKiosks.length + " Kiosks in the Bronx, " + brooklynKiosks.length + " Kiosks in Brooklyn, " + queensKiosks.length + " Kiosks in Queens, and " + statenKiosks.length + " Kiosks in Staten Island."
     console.log(totalKiosksDisplayed);
     tabletStatus.forEach(item =>{
         if (item.latitude && item.longitude) {
@@ -147,20 +168,6 @@ var tabletOffFilter = document.getElementById('show-tablet-down');
 
 tabletOffFilter.addEventListener('click', displayNoTablet);
 
-
-async function boroughDivide() {
-    var data = await fetchData();
-    manhattanKiosks = data.filter(item => (item.boro === 'Manhattan'));
-    console.log(manhattanKiosks);
-    bronxKiosks = data.filter(item => (item.boro === 'Bronx'));
-    console.log(bronxKiosks);
-    brooklynKiosks = data.filter(item => (item.boro === 'Brooklyn'));
-    console.log(brooklynKiosks);
-    queensKiosks = data.filter(item => (item.boro === 'Queens'));
-    console.log(queensKiosks);
-    statenKiosks = data.filter(item => (item.boro === 'Staten Island'));
-    console.log(statenKiosks);
-}
 // boroughDivide();
 
 
