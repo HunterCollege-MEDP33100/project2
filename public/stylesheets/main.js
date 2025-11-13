@@ -26,11 +26,10 @@ function addExcellentTrees(info){
         if(info[x].tpcondition == "Excellent"){
             mark = L.circleMarker([info[x].location.coordinates[1], info[x].location.coordinates[0]], {
             radius: 8,
-            color: '#333',        // stroke
+            color: 0,        // stroke
             fillColor: '#014421', // fill
             fillOpacity: 0.9
-            }).addTo(map)
-            .bindPopup(info[x].genusspecies);
+            }).addTo(map);
         }
     }
 }
@@ -41,7 +40,7 @@ function addGoodTrees(info){
         if(info[x].tpcondition == "Good"){
             mark = L.circleMarker([info[x].location.coordinates[1], info[x].location.coordinates[0]], {
             radius: 8,
-            color: '#333',        // stroke
+            color: 0,        // stroke
             fillColor:'#27AE60', // fill
             fillOpacity: 0.9
             }).addTo(map);
@@ -55,7 +54,7 @@ function addFairTrees(info){
         if(info[x].tpcondition == "Fair"){
             mark = L.circleMarker([info[x].location.coordinates[1], info[x].location.coordinates[0]], {
             radius: 8,
-            color: '#333',        // stroke
+            color: 0,        // stroke
             fillColor: '#F1C40F', // fill
             fillOpacity: 0.9
             }).addTo(map);
@@ -69,10 +68,11 @@ function addPoorTrees(info){
         if(info[x].tpcondition == "Poor"){
             mark = L.circleMarker([info[x].location.coordinates[1], info[x].location.coordinates[0]], {
             radius: 8,
-            color: '#333',        // stroke
+            color: 0,        // stroke
             fillColor: '#E67E22', // fill
             fillOpacity: 0.9
-            }).addTo(map);
+            }).addTo(map)
+            .bindPopup(info[x].genusspecies);
         }
     }
 }
@@ -83,7 +83,7 @@ function addCriticalTrees(info){
         if(info[x].tpcondition == "Critical"){
             mark = L.circleMarker([info[x].location.coordinates[1], info[x].location.coordinates[0]], {
             radius: 8,
-            color: '#333',        // stroke
+            color: 0,        // stroke
             fillColor: '#E74C3C', // fill
             fillOpacity: 0.9
             }).addTo(map);
@@ -97,7 +97,7 @@ function addDeadTrees(info){
         if(info[x].tpcondition == "Dead"){
             mark = L.circleMarker([info[x].location.coordinates[1], info[x].location.coordinates[0]], {
             radius: 8,
-            color: '#333',        // stroke
+            color: 0,        // stroke
             fillColor: '#000', // fill
             fillOpacity: 0.9
             }).addTo(map);

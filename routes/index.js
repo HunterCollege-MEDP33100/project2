@@ -11,7 +11,6 @@ router.get('/', function(req, res, next) {
     });
 });
 
-
 /* GET the conditions page. */
 router.get('/conditions', function(req, res, next) {
 
