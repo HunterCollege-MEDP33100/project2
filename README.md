@@ -41,6 +41,7 @@ Artist info:
 
 Code reference/tutorial:
 - https://gsap.com/community/forums/topic/20905-text-animation
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
@@ -56,3 +57,5 @@ Code reference/tutorial:
 - Retrieve artist data from an API.
 
 - Add more animations to improve the user experience.
+
+- Optimize code
