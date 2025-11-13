@@ -5,7 +5,8 @@ document.getElementById('map')
 
 //layer group that manages the markers
 var markerLayerGroup = L.layerGroup().addTo(map); 
-
+var totalKiosksDisplayed = ''
+var displayEl = document.getElementById('totalCount')
 //adds the viewable part of the map aka tile
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 17,
@@ -26,7 +27,9 @@ fetchData();
 async function displayAll() {
     markerLayerGroup.clearLayers(); 
     var data = await fetchData();
-    console.log(data);
+    totalKiosksDisplayed = data.length
+    console.log(totalKiosksDisplayed);
+    displayEl.innerText = "There is a total of "+ totalKiosksDisplayed + " Kiosks on the map currently";
     data.forEach(item =>{
         if (item.latitude && item.longitude) {
             L.marker([item.latitude, item.longitude])
@@ -45,8 +48,10 @@ async function displayWifi() {
     markerLayerGroup.clearLayers(); 
     var data = await fetchData();
     wifiStatus = data.filter(item => (item.wifi_status === 'up'));
-    console.log(wifiStatus);
-    data.forEach(item =>{
+    totalKiosksDisplayed = wifiStatus.length
+    console.log(totalKiosksDisplayed);
+    displayEl.innerText = "There is a total of "+ totalKiosksDisplayed + " Kiosks on the map currently";
+    wifiStatus.forEach(item =>{
         if (item.latitude && item.longitude) {
             L.marker([item.latitude, item.longitude])
             .addTo(markerLayerGroup);  
@@ -58,12 +63,36 @@ var wifiFilter = document.getElementById('show-wifi-up')
 
 wifiFilter.addEventListener('click', displayWifi)
 
+async function displayNoWifi() {
+    markerLayerGroup.clearLayers(); 
+    var data = await fetchData();
+    wifiStatus = data.filter(item => {
+    const status = item.wifi_status;
+    return status === 'down' || status == null; // null or undefined
+});
+    totalKiosksDisplayed = wifiStatus.length
+    console.log(totalKiosksDisplayed);
+    displayEl.innerText = "There is a total of "+ totalKiosksDisplayed + " Kiosks on the map currently";
+    wifiStatus.forEach(item =>{
+        if (item.latitude && item.longitude) {
+            L.marker([item.latitude, item.longitude])
+            .addTo(markerLayerGroup);  
+        }
+    })
+}
+
+var wifiOffFilter = document.getElementById('show-wifi-down')
+
+wifiOffFilter.addEventListener('click', displayNoWifi)
+
 async function displayTablet() {
     markerLayerGroup.clearLayers(); 
     var data = await fetchData();
     tabletStatus = data.filter(item => (item.tablet_status === 'up'));
-    console.log(tabletStatus);
-    data.forEach(item =>{
+    totalKiosksDisplayed = tabletStatus.length
+    displayEl.innerText = "There is a total of "+ totalKiosksDisplayed + " Kiosks on the map currently";
+    console.log(totalKiosksDisplayed);
+    tabletStatus.forEach(item =>{
         if (item.latitude && item.longitude) {
             L.marker([item.latitude, item.longitude])
             .addTo(markerLayerGroup);  
@@ -71,9 +100,49 @@ async function displayTablet() {
     })    
 }
 
-var tabletFilter = document.getElementById('show-tablet-up');
+var tabletOnFilter = document.getElementById('show-tablet-up');
 
-tabletFilter.addEventListener('click', displayTablet);
+tabletOnFilter.addEventListener('click', displayTablet);
+
+async function displayNoTablet() {
+    markerLayerGroup.clearLayers(); 
+    var data = await fetchData();
+    tabletStatus = data.filter(item => (item.tablet_status === 'down'));
+    totalKiosksDisplayed = tabletStatus.length
+    displayEl.innerText = "There is a total of "+ totalKiosksDisplayed + " Kiosks on the map currently";
+    console.log(totalKiosksDisplayed);
+    tabletStatus.forEach(item =>{
+        if (item.latitude && item.longitude) {
+            L.marker([item.latitude, item.longitude])
+            .addTo(markerLayerGroup);  
+        }
+    })    
+}
+
+var tabletOffFilter = document.getElementById('show-tablet-down');
+
+tabletOffFilter.addEventListener('click', displayNoTablet);
+
+var boroArray = []
+
+// async function boroughDivide() {
+//     var data = await fetchData();
+//     manhattanKiosks = data.filter(item => (item.boro === 'Manhattan'));
+//     console.log(manhattanKiosks);
+//     bronxKiosks = data.filter(item => (item.boro === 'Bronx'));
+//     console.log(bronxKiosks);
+//     brooklynKiosks = data.filter(item => (item.boro === 'Brooklyn'));
+//     console.log(brooklynKiosks);
+//     queensKiosks = data.filter(item => (item.boro === 'Queens'));
+//     console.log(queensKiosks);
+//     statenKiosks = data.filter(item => (item.boro === 'Staten Island'));
+//     console.log(statenKiosks);
+//     boroArray = [manhattanKiosks.length, bronxKiosks.length, brooklynKiosks.length, queensKiosks.length, statenKiosks.length]
+//     console.log(boroArray)
+// }
+// boroughDivide();
+
+
 //function to display kiosks with wifi status = to up then display location on button click should start the function with clearing all current markers then running previous function with if statement to check for wifi status
 // async function fetchWifi(filterByWifiUp = false) { 
 //     // clears all markers

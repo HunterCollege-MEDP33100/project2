@@ -14,7 +14,7 @@ Samantha Cobty and Daniel Martinez
 - Explain what live data set was used, and what you hope users would learn about the data set by using your project
 
 ## Features
-We include a live map display which is used to show off kiosk
+We include a live map display which is used to show off kiosk location in which the user is able to sift through kiosks with active WiFi, active tablets, and or display all kiosks present in New York City. We've implemented a number tracking system used to see how many concurrent 
 - List all (at least 3) distinct types of user interaction, such as filtering, sorting, modifying data views, or changing the data presentation.
 
 ## Technologies Used
