@@ -1,3 +1,7 @@
+html, body {
+    height: 100%;
+}
+
 body {
   margin: 0px;
   padding: 0px;
@@ -45,10 +49,10 @@ h2{
 }
 
 #screen {
-  height: 100vh;
+  min-height: 100vh;
   margin-left: 10%;
   margin-right: 10%;
-  margin-bottom: 5%;
+  
   background-color: #01a2eb;
   padding-left: 3%;
   padding-right: 3%;
@@ -130,6 +134,19 @@ p {
   font-weight: 500;
 }
 
+#boroughCount {
+  background-color: #efa508;
+  color: #ffffff;
+  padding: 10px;
+  margin: 0px;
+  align-items: center;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  border-radius: 2px;
+  font-weight: 500;
+}
+
 a:link {
   text-decoration: none;
 }
@@ -159,21 +176,36 @@ a:hover {
 
 /* Mobile Design*/
  @media (max-width: 500px) {
-            .screen{
-              height: 200vh;
+            #screen{
+              min-height: 100vh;
               margin-left: 5%;
               margin-right: 5%;
-              margin-bottom: 0px;
+              margin-bottom: 10%;
               background-color: #01a2eb;
               padding-left: 3%;
               padding-right: 3%;
-              padding-bottom: 20%;
             }
-            .map {
+            #map {
                 padding: 5px; 
+                height: 50vh;
             }
-            .buttons {
+            #buttons {
               display: flex;
-              flex-direction: column;
+              flex-direction: row;
+              align-items: center;
+              margin: 0%;
+              font-size: 12px;
             }
+            #totalCount, #boroughCount {
+                padding: 5px;
+                margin: 0px;
+                align-items: center;
+                border-style: solid;
+                border-color: black;
+                border-width: 1px;
+                border-radius: 2px;
+                font-weight: 450;
+                font-size: 15px;
+            }
+
         }
