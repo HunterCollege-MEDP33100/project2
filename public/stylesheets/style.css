@@ -3,11 +3,23 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     background-color: #f9f9f9;
   color: #333;
+  transition: background-color 0.3s ease;
 }
 
+body{
+  animation:fadeIn 1.2s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+/*link color*/
 a {
   color: #00B7FF;
 }
+
+/* map section*/
 
 #mymap{
   height: 500px;
@@ -19,9 +31,12 @@ nav {
   background-color: #ffffff;
   padding: 1rem 0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position:sticky;/* Make navbar stick to top */
+  top:0;
+  z-index:100;
 }
 
-/* List layout */
+/*  navbar List layout */
 nav ul {
   list-style: none;
   display: flex;
@@ -44,6 +59,8 @@ nav a {
 nav a:hover {
   color: #4caf50;
   border-bottom: 2px solid #4caf50;
+  transform: translateY(-3px); /* small lift effect */
+
 }
 
 /* Title style */
@@ -51,8 +68,16 @@ h1 {
   text-align: center;
   margin: 2rem 0 1rem;
   font-size: 2.2rem;
-  color: #222;
+ letter-spacing: 1px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  animation: slideDown 0.7s ease;
 }
+
+@keyframes slideDown {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
 /* Gallery styles */
 .gallery-container {
   display: grid;
@@ -62,7 +87,7 @@ h1 {
 }
 
 .gallery-item {
-  background: white;
+  background: rgb(251, 3, 3);
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   text-align: center;
@@ -79,4 +104,18 @@ h1 {
   height: 200px;
   object-fit: cover;
   border-radius: 8px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  filter: brightness(95%);
+  transition: filter 0.3s, transform 0.3s;
+}
+
+.gallery-item img:hover {
+  filter: brightness(110%);
+  transform: scale(1.05);
 }
