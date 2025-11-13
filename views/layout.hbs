@@ -3,20 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Explore and discover the best anime from MyAnimeList with our beautiful anime explorer interface" />
     <title>{{title}}</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://api.jikan.moe">
   </head>
 
   <body>
     {{{body}}}
+    
+    <footer>
+      <p>
+        Data powered by <a href="https://jikan.moe/" target="_blank" rel="noopener">Jikan API</a> 
+        • Built with ❤️ for anime lovers
+      </p>
+      <p style="margin-top: 0.5rem; font-size: 0.875rem; opacity: 0.8;">
+      Press G for grid view, L for list view, R to refresh
+      </p>
+    </footer>
+
+    <script src="/javascripts/script.js"></script>
   </body>
-
-  <footer>
-    <p>
-      Data from <a href="https://jikan.moe/" target="_blank">Jikan API</a>
-    </p>
-  </footer>
-
-  <script src="/javascripts/script.js"></script>
 </html>
-
