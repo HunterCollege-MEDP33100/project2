@@ -32,6 +32,7 @@ document.addEventListener('click', async (event) => {
     const artistImg = document.getElementById('artist-image');
     const artistNameEl = document.getElementById('artist-name');
     const artistPopularity = document.getElementById('artist-popularity');
+    const artistAbout = document.getElementById('artist-about')
     const detailsDiv = document.querySelector('.artist-details');
 
     artistImg.src = artist.images?.[0]?.url || '';
@@ -40,7 +41,7 @@ document.addEventListener('click', async (event) => {
     artistAbout.textContent = artistAboutText
 
     // Search for a song from this artist inside the playlist
-    const playlistId = '5ABHKGoOzxkaa28ttQV9sE'; 
+    const playlistId = '5ABHKGoOzxkaa28ttQV9sE';
     const playlistResponse = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}`, {
       headers: { 'Authorization': `Bearer ${token}` }
     });
@@ -62,7 +63,7 @@ document.addEventListener('click', async (event) => {
       embed.height = '80';
       embed.frameBorder = '0';
       detailsDiv.appendChild(embed);
-    } 
+    }
 
     // Show section below artist buttons
     infoSection.classList.remove('hidden');

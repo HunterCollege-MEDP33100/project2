@@ -26,11 +26,20 @@
     - **Languages**: HTML, CSS, JavaScript
     - **Libraries**: (e.g., GSAP for animations)
     - **APIs**: Public APIs where the data set comes from
-    - **Other**: Figma for design, OpenAI for A.I.
+    - **Other**: Figma for design, OpenAI for code, Wikipedia for artist information, Spotify's Web API
 
 ## Credits
+Artist info:
+- https://www.spotify.com (Laime, Nick Broadhurst, Michael Day Walston, Alex Ray) 
+- https://www.frankiemuriel.com (info about Frankie Muriel)
+- https://hourglass-effect.com/about
+- https://maithiliraelle.com 
+- https://artistuncut.com/2am-ignites-the-night-misfit-millis-cinematic-rise-to-stardom/#:~:text=Enter%20MISFIT%20MILLI—a%20bold,into%20the%20future%20of%20music.
+- https://rayburnbrothersband.com
+- https://www.songsmagazine.com/new-music/2025/03/17/the-world-of-sehore-and-pesadilla-in-alternative-rock
+- https://earmilk.com/2024/10/15/from-dance-floors-to-meditation-how-steinsdotter-is-thriving-across-genres 
 
-- List any third-party assets used in the project (e.g., sound effects, images, fonts) and provide proper attribution.
+Code reference/tutorial:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
