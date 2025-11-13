@@ -14,7 +14,6 @@ var boroEl = document.getElementById('boroughCount')
 var KioskIcon = L.Icon.extend({
     options: {
         iconSize:     [20, 20],
-        // Note: Icon anchor needs adjustment for a 20x20 icon size
         iconAnchor:   [10, 10], 
         popupAnchor:  [0, -10]
     }
@@ -23,6 +22,7 @@ var KioskIcon = L.Icon.extend({
 var blackIcon = new KioskIcon({iconUrl: 'images/kiosk-black.png'}),
     blueIcon = new KioskIcon({iconUrl: 'images/kiosk-blue.png'}),
     grayIcon = new KioskIcon({iconUrl: 'images/kiosk-gray.png'});
+    blankIcon = new KioskIcon({iconUrl: 'images/kiosk.png'});
 
 
 //adds the viewable part of the map aka tile
@@ -109,7 +109,7 @@ async function displayNoWifi() {
     boroEl.innerText = "There is a total of " + manhattanKiosks.length + " Kiosks in Manhattan, " + bronxKiosks.length + " Kiosks in the Bronx, " + brooklynKiosks.length + " Kiosks in Brooklyn, " + queensKiosks.length + " Kiosks in Queens, and " + statenKiosks.length + " Kiosks in Staten Island."
     wifiStatus.forEach(item =>{
         if (item.latitude && item.longitude) {
-            const marker = L.marker([item.latitude, item.longitude],{icon: blueIcon}).addTo(markerLayerGroup);
+            const marker = L.marker([item.latitude, item.longitude],{icon: blackIcon}).addTo(markerLayerGroup);
             marker.bindPopup(item.address + ', ' + item.city + ', ' + item.state + ', '+ item.zip);
         }
     })
@@ -134,7 +134,7 @@ async function displayTablet() {
     console.log(totalKiosksDisplayed);
     tabletStatus.forEach(item =>{
         if (item.latitude && item.longitude) {
-            const marker = L.marker([item.latitude, item.longitude],{icon: blueIcon}).addTo(markerLayerGroup);
+            const marker = L.marker([item.latitude, item.longitude],{icon: blackIcon}).addTo(markerLayerGroup);
             marker.bindPopup(item.address + ', ' + item.city + ', ' + item.state + ', '+ item.zip);
         }
     })    
