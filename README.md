@@ -34,9 +34,22 @@ Other Tools: Express.js (backend), VS Code (development)
 
 ## Credits
 
-- List any third-party assets used in the project (e.g., sound effects, images, fonts) and provide proper attribution.
-- Acknowledge any resources, tutorials, or references you used to help complete the project.
+Spotify Web API – used to access playlists by city, mood, style/genre, and time period.
+
+Render – used to host our live project.
+
+Frontend: HTML, CSS, JavaScript, and jQuery for interactive elements.
+
+Backend: Node.js and Express for server-side code and API connections.
+
+Design tools: Figma (for layout planning) and Google Fonts (for typography).
+
+Visual inspiration and icons: Free images from Google and icons from Font Awesome.
 
 ## Future Enhancements
 
-- List any features you would’ve liked to add if given more time
+Implement user profiles or saved playlists so visitors can favorite or revisit their picks.
+
+Create animated visuals (like P5.js or CSS animations) that react to the playlist’s mood or genre.
+
+Include local artist recommendations once a suitable API or dataset becomes available.
