@@ -24,7 +24,7 @@
 
 - List the technologies and tools used in the project:
     - **Languages**: HTML, CSS, JavaScript
-    - **Libraries**: (e.g., GSAP for animations)
+    - **Libraries**: GSAP for animations
     - **APIs**: Spotify Web API
     - **Other**: Figma for design, OpenAI for code, Wikipedia for artist information, JSON Minify to minify artists.json
 
@@ -40,6 +40,7 @@ Artist info:
 - https://earmilk.com/2024/10/15/from-dance-floors-to-meditation-how-steinsdotter-is-thriving-across-genres 
 
 Code reference/tutorial:
+- https://gsap.com/community/forums/topic/20905-text-animation
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set

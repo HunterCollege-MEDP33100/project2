@@ -86,9 +86,14 @@ async function displayPopularity() {
     document.getElementById('title').style.display = 'none'
     const loading = document.getElementById('loading')
 
+    gsap.set(loading, { x: '-101%' })
+    const lines = gsap.timeline({ repeat: 5, yoyo: true, repeatDelay: 2 })
+    lines.to(loading, { duration: 2, x: '0%', ease: 'power1.inOut' })
+
     const artistPopularityRanked = await getData()
 
     //after data retrieved, hide "loading artists..." and show title
+    lines.kill()
     document.getElementById('title').style.display = 'block'
     loading.style.display = 'none'
 
