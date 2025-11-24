@@ -1,2 +1,78 @@
-<h1>{{title}}</h1>
-<p>Your HTML goes here</p>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Listening Station</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="header-flex">
+        <div class="music-notes-container">
+          <div class="music-notes top-row">
+            <span>🎵</span>
+            <span>🎶</span>
+            <span>🎵</span>
+          </div>
+          <div class="music-notes bottom-row">
+            <span>🎶</span>
+            <span>🎵</span>
+            <span>🎶</span>
+          </div>
+        </div>
+
+        <img src="images/listeningstation.png" class="logo" />
+
+        <img src="images/spotify.png" class="spotify-logo" />
+      </div>
+
+      <p class="tagline">
+        Discover music by
+        <span class="color-phase" style="--delay:0s;">city</span>,
+        <span class="color-phase" style="--delay:0.6s;">mood</span>,
+        <span class="color-phase" style="--delay:1.2s;">genre</span>, or
+        <span class="color-phase" style="--delay:1.8s;">decade</span>
+      </p>
+    </header>
+
+    <!-- Mode Selection Grid -->
+    <section id="mode-grid">
+      <div class="mode-card" id="map-mode">
+        <h2 class="color-phase-slow" style="--delay:0s;">🗺️ My Map</h2>
+        <p>Explore playlists from cities across the U.S.</p>
+        <button class="enter-mode">Explore</button>
+      </div>
+
+      <div class="mode-card" id="mood-mode">
+        <h2 class="color-phase-slow" style="--delay:0.6s;">💫 My Mood</h2>
+        <p>Enter how you feel and get the perfect playlist.</p>
+        <button class="enter-mode">Find Vibes</button>
+      </div>
+
+      <div class="mode-card" id="genre-mode">
+        <h2 class="color-phase-slow" style="--delay:1.2s;">🎸 My Style</h2>
+        <p>Search by genre and explore similar sounds.</p>
+        <button class="enter-mode">Search Genre</button>
+      </div>
+
+      <div class="mode-card" id="throwback-mode">
+        <h2 class="color-phase-slow" style="--delay:1.8s;">🕺 My Throwback</h2>
+        <p>Choose a decade or era to relive the hits.</p>
+        <button class="enter-mode">Take Me Back</button>
+      </div>
+    </section>
+
+    <!-- Shared Mode Content Area -->
+    <section id="mode-content" class="hidden">
+      <button id="back-button">← Back</button>
+      <h2 id="mode-title"></h2>
+      <div id="map" class="hidden"></div>
+      <div id="info" class="m-auto"></div>
+    </section>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

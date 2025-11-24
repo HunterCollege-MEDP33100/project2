@@ -1,0 +1,289 @@
+body {
+  background: #000;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+}
+
+.logo {
+  margin-top: 10px;
+  padding-top: 5px;
+  height: 300px;
+  flex-shrink: 0;
+}
+
+/* === Header Flex Layout === */
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; /* aligns items by their bottom edges */
+  width: 85%;
+  max-width: 1600px;
+  margin: 0 auto 20px auto;
+  position: relative;
+}
+
+/* Spotify Logo */
+.spotify-logo {
+  height: 400px;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+.spotify-logo:hover {
+  transform: scale(1.05);
+}
+
+/* Two-row note layout */
+.music-notes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: center;
+  transform: translateY(-100px);
+  flex-shrink: 0;
+}
+
+/* Notes styling and animation */
+.music-notes {
+  display: flex;
+  gap: 12px;
+  font-size: 3.4rem; /* slightly larger for visual balance */
+}
+
+.music-notes.bottom-row {
+  transform: translateX(-20px); /* slight left shift for lower row */
+  opacity: 0.85;
+}
+
+.music-notes span {
+  display: inline-block;
+  animation: bounceNote 2s ease-in-out infinite,
+    fadeNote 3s ease-in-out infinite;
+}
+
+.music-notes span:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.music-notes span:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+/* Bobbing motion for the notes */
+@keyframes bounceNote {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* Subtle fade rhythm */
+@keyframes fadeNote {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+header {
+  text-align: center;
+  margin-top: -50px;
+  padding-top: 10px; 
+}
+
+header h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.tagline {
+  font-size: 2.5em;
+  opacity: 0.9;
+  margin-top: -5px;
+  text-align: center;
+}
+
+/* Animated text color shimmer */
+.color-phase {
+  animation: shimmerColors 6s ease-in-out infinite;
+  animation-delay: var(--delay);
+  font-weight: bold;
+}
+
+.color-phase-slow {
+  animation: shimmerColors 12s ease-in-out infinite;
+  animation-delay: var(--delay);
+  font-weight: bold;
+}
+
+@keyframes shimmerColors {
+  0% {
+    color: #00b4ff;
+  }
+  20% {
+    color: #ff47c5;
+  }
+  40% {
+    color: #a65cff;
+  }
+  60% {
+    color: #ffcc33;
+  }
+  80% {
+    color: #ff7a00;
+  }
+  100% {
+    color: #00b4ff;
+  }
+}
+
+/* === Mode Grid === */
+#mode-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  width: 85%;
+  max-width: 1200px;
+  margin: 50px auto;
+}
+
+.mode-card {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 25px 20px;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+.mode-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25);
+}
+
+.mode-card h2 {
+  font-size: 1.6em;
+  margin-bottom: 10px;
+}
+.mode-card p {
+  font-size: 1em;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.enter-mode {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 30px;
+  background-color: rgb(220, 65, 135);
+  color: #000;
+  font-size: 0.95em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.enter-mode:hover {
+  background-color: yellow;
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(255, 65, 108, 0.7);
+}
+
+button {
+  color: #fff;
+}
+
+/* Back Button */
+#back-button {
+  align-self: flex-start;
+  margin: 40px 0 0 10%;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 30px;
+  background-color: yellow;
+  color: #000;
+  font-size: 0.95em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+#back-button:hover {
+  background-color: rgb(220, 65, 135);
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(0, 173, 181, 0.7);
+}
+
+/* === Mode Content === */
+#mode-content {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#mode-content h2 {
+  margin-top: 40px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.hidden {
+  display: none !important;
+}
+
+#map {
+  width: 80%;
+  height: 500px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#info {
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  margin-top: 10px;
+  max-width: 1000px;
+  padding: 20px;
+  text-align: left;
+  width: 80%;
+}
+
+.mood-btn {
+  background: #333;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.mood-btn:hover {
+  background: #ff6600;
+  transform: scale(1.05);
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  #map {
+    width: 95%;
+    height: 400px;
+  }
+  #info {
+    width: 95%;
+  }
+}
