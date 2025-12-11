@@ -1,2 +1,27 @@
-<h1>{{title}}</h1>
-<p>Your HTML goes here</p>
+<header>
+  <h1 class="page-title">{{h1}}</h1>
+  <p class="subtitle">Explore Top Anime from Jikan API (Live Data)</p>
+
+  <div class="controls">
+    <select id="filter-type">
+      <option value="tv">TV</option>
+      <option value="movie">Movie</option>
+      <option value="special">Special</option>
+    </select>
+
+    <select id="sort-type">
+      <option value="score">Sort by Score</option>
+      <option value="rank">Sort by Rank</option>
+      <option value="title">Sort by Title</option>
+    </select>
+
+    <button id="refresh">Refresh</button>
+  </div>
+</header>
+
+<main>
+  <div id="slideshow_container" class="slider">
+    <div class="loading">Loading anime data...</div>
+  </div>
+  <button id="loadMore" class="hidden">Load More</button>
+</main>
